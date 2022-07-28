@@ -1,17 +1,18 @@
 <template>
   <div>
-    <NewComponent></NewComponent>
+    <p>Testing Django API</p>
   </div>
 </template>
 
 <script>
-import NewComponent from './components/NewComponent.vue';
+
+
 
 
 export default {
   name: 'App',
   components: {
-    NewComponent
+ 
 }
 }
 </script>
