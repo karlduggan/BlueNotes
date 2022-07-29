@@ -4,6 +4,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import TaskSerializer
 
+from rest_framework.permissions import IsAuthenticated
+
 from .models import Task
 
 # Create your views here.
@@ -24,6 +26,7 @@ def taskList(request):
     serializer = TaskSerializer(tasks, many=True)
     return Response(serializer.data)
 
+# CREATE
 @api_view(['POST'])
 def taskCreate(request):
 	serializer = TaskSerializer(data=request.data)
@@ -33,3 +36,28 @@ def taskCreate(request):
 
 	return Response(serializer.data)
 
+# READ
+@api_view(['GET'])
+def taskRead(request, pk):
+    serializer = TaskSerializer(data=request.data)
+    tasks = Task.objects.get(id=pk)
+    serializer = TaskSerializer(tasks, many=False)
+    return Response(serializer.data)
+
+# UPDATE
+@api_view(['POST'])
+def taskUpdate(request, pk):
+    task = Task.objects.get(id=pk)
+    serializer = TaskSerializer(instance=task, data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+    
+    return Response(serializer.data)
+
+# DELETE
+@api_view(['DELETE'])
+def taskDelete(request, pk):
+    task = Task.objects.get(id=pk)
+    task.delete()
+    
+    return Response("Deleted Successfully")
