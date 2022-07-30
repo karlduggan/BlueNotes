@@ -18,3 +18,9 @@ django-admin startapp myapp
 pip install djangorestframework
 pip install markdown       # Markdown support for the browsable API.
 pip install django-filter  # Filtering support
+
+
+
+# Pip info
+pip3 freeze > requirements.txt
+pip/easy_install
