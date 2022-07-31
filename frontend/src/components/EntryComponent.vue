@@ -15,7 +15,7 @@
 
             <div class="right">
                 <DynamicStatusButtom :status="status"/>
-                <button @click="deleteEntry()">Temp Delete</button>
+                <button id="removeButton" @click="deleteEntry()">Remove</button>
             </div> 
             </div>
     </div>
@@ -44,7 +44,7 @@ export default {
     },
     methods: {
         deleteEntry: function(){
-            console.log(this.id);
+         
 
             const url = "http://127.0.0.1:8000/api/task-delete/" + this.id;
             const options =  {
@@ -64,7 +64,6 @@ export default {
 
 <style scoped >
 .left {
-
     width: 100%;
 
 }
@@ -72,7 +71,7 @@ export default {
 width: 100px;
 }
 .container {
-
+ width: 350px;
 }
 .entry {
     display: flex;
@@ -92,7 +91,17 @@ header {
     color:rgb(187, 187, 187);
 }
 .content-container {
-
+    color:rgb(169, 169, 169);
+}
+#removeButton {
+    font-family: sans-serif;
+    border: none;
+    width: 100px;;
+    padding: 5px;
+    cursor: pointer;
+    text-align: center;
+    align-content: center;
+    margin-top: 10px;
 }
 
 

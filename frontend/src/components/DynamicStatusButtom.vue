@@ -1,24 +1,32 @@
 <template>
     <div>
-        <button @click="changeStatus()" >{{currentStatus}}</button>
+        <button 
+        @click="changeStatus" >{{currentStatus}}
+        </button>
     </div>
 </template>
 
 
 <script>
+
+
+
+
 export default {
     props : {
         status: String
     },
     data() {
         return {
-            currentStatus: this.status
+            currentStatus: this.status,
+            currentColor: "red"
         }
     },
     methods: {
         // On click change the status
         changeStatus: function() {
             this.updateStatusChange(this.currentStatus);
+    
         },
         updateStatusChange: function(currentStatus) {
             const updateStatus = { 
@@ -30,9 +38,6 @@ export default {
             // Set and update status
             console.log(currentStatus)
             this.currentStatus = updateStatus[currentStatus];
-           
-
-
     }
 }
 
@@ -49,5 +54,17 @@ button {
     cursor: pointer;
     text-align: center;
     align-content: center;
+}
+.red {
+    background-color: red;
+}
+.blue {
+    background-color: blue;
+}
+.grey {
+    background-color: grey;
+}
+.purple {
+    background-color: purple;
 }
 </style>

@@ -2,7 +2,7 @@
     <div class="container">
         <div class="list-wrapper">
             <tbody>
-            <tr class="table-row" v-for="(task, index) in taskList.reverse()" :key="index.id">
+            <tr class="table-row" v-for="(task, index) in taskList" :key="index.id">
                  <EntryComponent 
                  :title="taskList[index].title"
                  :content="taskList[index].content"
@@ -42,6 +42,9 @@ export default {
             .then(response => response.json())
             .then(data => this.taskList = data)
             .catch( error => console.log(error.message))
+
+            // Reverse the task list 
+            this.taskList = this.taskList.reverse();
         }
         
     },
