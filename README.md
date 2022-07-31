@@ -36,3 +36,5 @@ npm install json-server
 
 # Resources that helped with the cor policy and cross domain issue
 https://www.youtube.com/watch?v=7GWKv03Osek
+
+Confirm update...

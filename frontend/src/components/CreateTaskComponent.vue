@@ -1,22 +1,15 @@
 <template>
     <div class="container">
         <div class="inside-container">
-            
                 <input type="text" v-model="title" placeholder="Title..."/>
                 <textarea type="text" v-model="content" placeholder="More Detail..."/>  
-            
-        
-        
                 <button @click="CreateTask()">Submit</button>
-            
-           
         </div>
-
-        
     </div>
 </template>
 
 <script>
+
 export default {
     data(){
         return {
@@ -31,7 +24,7 @@ export default {
                 "title": this.title, 
                 "content":this.content, 
                 "completed": "False", 
-                "status": "ToDO",
+                "status": "To Do",
                 "timestamp": this.timeStamp()
             };
             console.log(this.title)
@@ -106,6 +99,7 @@ textarea {
     box-sizing: border-box;
     width:100%;
     font-size: 14px;
+    font-family: sans-serif;
     border: solid rgb(229, 229, 229) 3px;
     color: rgb(134, 134, 134);
     outline: none;
@@ -123,5 +117,10 @@ button {
     font-weight: 800;
     color: rgb(134, 134, 134);
     cursor: pointer;
+}
+button:hover {
+    background-color: rgb(178, 178, 178);
+    border: solid rgb(178, 178, 178) 3px;
+    color: rgb(255, 255, 255);
 }
 </style>
