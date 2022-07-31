@@ -3,12 +3,14 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import TaskSerializer
+from django.views.decorators.csrf import csrf_exempt
 
 from rest_framework.permissions import IsAuthenticated
 
 from .models import Task
 
 # Create your views here.
+
 @api_view(['GET'])
 def apiOverview(request):
     api_urls = {

@@ -1,43 +1,58 @@
 <template>
     <div class="container">
-        <div class="header">
-            <h2>{{title}}</h2>
-        </div>
-        <div class="content-container">
-            <p>{{content}}</p>
-        </div>
-        <button @click="statusUpdate()" >Status</button>
-        <button>Delete</button>
-    </div>
+          <div class="entry">
+                    <div class="title-container">
+                        <p>{{title}}</p>
+                    </div>
+                    <div class="content-container">
+                        <p>{{content}}</p>
+                    </div>
 
+                    
+                    <span>{{timestamp}}</span>
+                    <span>{{status}}</span>
+                   
+                </div>
+    </div>
 </template>
 
 <script>
+
 export default {
     name: "EntryComponent",
-    props: {
-        id: Number,
-        title: String,
-        content: String,
-        status: String
-    },
+    props: [
+        'title',
+        'content',
+        'status', 
+        'timestamp'
+    ],
     data(){
         return {
+            
 
         }
     },
     methods: {
-        statusUpdate:function() {
-            console.log("Testing click button for status update");
-        }
+        
     }
+
 }
 </script>
 
 <style scoped >
 .container {
-    width: 300px;
-    height: 300px;
-    background-color: beige;
+
 }
+.entry {
+    margin-bottom: 5px;
+   
+    padding: 5px;
+    border: solid 2px rgb(235, 235, 235);
+}
+.title-container {
+    font-size: 14px;
+    font-weight: 800;
+}
+
+
 </style>

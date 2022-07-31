@@ -1,32 +1,53 @@
 <template>
-  <div>
-    <p>Testing Django API</p>
-    <EntryComponent id=1 title="Testing Title" content="this is a test to find out what works"/>
+
+  <h3>Vue and Django API Testing</h3>
+
+  <div class="app-container">
+    
+    
+    <div class="top">
+      <CreateTaskComponent/>
+    </div>
+    <div class="bottom">
+      <ListTaskComponent/>
+    </div>
   </div>
 </template>
 
 <script>
-import EntryComponent from './components/EntryComponent.vue';
 
 
-
+import CreateTaskComponent from './components/CreateTaskComponent.vue';
+import ListTaskComponent from './components/ListTaskComponent.vue';
 
 export default {
   name: 'App',
   components: {
-    EntryComponent
+    CreateTaskComponent,
+    ListTaskComponent
 }
 }
 </script>
 
 <style>
-* {
-padding: 0;
-margin: 0;
+h3 {
+  text-align: center;
+  color: rgb(134, 134, 134)
 }
+.app-container {
 
+}
+.top {
+  display: flex;
+  justify-content: center;
+}
+.bottom {
+  display: flex;
+  justify-content: center;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  
+  font-family:  sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   

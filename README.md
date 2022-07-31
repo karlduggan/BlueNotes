@@ -23,4 +23,16 @@ pip install django-filter  # Filtering support
 
 # Pip info
 pip3 freeze > requirements.txt
-pip/easy_install
+pip install -r requirements.txt
+
+
+# Vue.js
+
+npm run serve 
+
+npm install json-server
+
+
+
+# Resources that helped with the cor policy and cross domain issue
+https://www.youtube.com/watch?v=7GWKv03Osek

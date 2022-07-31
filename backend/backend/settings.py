@@ -42,12 +42,30 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Local Apps (Your project's apps)
     'fooApp',
-    'api.apps.ApiConfig'
+    'api.apps.ApiConfig',
+    # add to ： Cross domain components
+    'corsheaders' 
 ]
+
+#CORS_ORIGIN_ALLOW_ALL = True
+
+# CORS Group configuration information 
+
+CORS_ORIGIN_WHITELIST = (
+
+'http://127.0.0.1:8000',
+'http://localhost:8000',
+'http://127.0.0.1:8080',
+'http://localhost:8080'
+
+# Here we need to pay attention to ： 1. You must add http:// Otherwise, the report will be wrong （https Not tested ） 2. This address is the address that allows cross domain , Front end address 
+
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware', # add to ： Put the first line （ Put other lines not tested ）
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
