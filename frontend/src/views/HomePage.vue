@@ -10,3 +10,10 @@ export default {
     name: 'HomePage'
 }
 </script>
+
+<style lang="scss" scoped>
+//@import '@/assets/_shared.scss';
+h1{
+    color: $green;
+}
+</style>
