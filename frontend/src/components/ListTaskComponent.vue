@@ -66,7 +66,7 @@ export default {
     width: 365px;
     overflow-y: hidden;
     padding: 20px;
-    border: solid rgb(229, 229, 229) 3px;
+    border: solid $light-grey 3px;
 }
 .list-wrapper:hover {
     overflow-y: scroll;

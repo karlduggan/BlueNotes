@@ -24,7 +24,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 h3 {
   text-align: center;
   color: rgb(134, 134, 134)

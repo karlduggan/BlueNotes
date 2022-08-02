@@ -18,11 +18,16 @@ export default {
         }
     },
     methods: {
+        formatInput: function(string){
+        // This method will return the same string with the first letter uppercased
+        return string.charAt(0).toUpperCase() + string.slice(1);
+        },
+
         CreateTask: function(){
             var data = {
                 "id": "1", 
-                "title": this.title, 
-                "content":this.content, 
+                "title": this.formatInput(this.title), 
+                "content": this.formatInput(this.content), 
                 "completed": "False", 
                 "status": "To Do",
                 "timestamp": this.timeStamp()
@@ -87,8 +92,8 @@ input {
     padding: 10px;
     width: 100%;
     font-size: 18px;
-    border: solid rgb(229, 229, 229) 3px;
-    color: rgb(134, 134, 134);
+    border: solid $light-grey 3px;
+    color: $dark-grey;
     outline: none;
     position: relative;
     box-sizing: border-box;
@@ -100,8 +105,8 @@ textarea {
     width:100%;
     font-size: 14px;
     font-family: sans-serif;
-    border: solid rgb(229, 229, 229) 3px;
-    color: rgb(134, 134, 134);
+    border: solid $light-grey 3px;
+    color: $dark-grey;
     outline: none;
     height: 80px;
     resize: none;
@@ -112,15 +117,15 @@ button {
     width: 100%;
     padding: 15px;
     margin-top: 15px;
-    border: solid rgb(229, 229, 229) 3px;
-    background-color: rgb(229, 229, 229);
+    border: solid $light-grey 3px;
+    background-color: $light-grey;
     font-weight: 800;
-    color: rgb(134, 134, 134);
+    color: $dark-grey;
     cursor: pointer;
 }
 button:hover {
-    background-color: rgb(178, 178, 178);
-    border: solid rgb(178, 178, 178) 3px;
-    color: rgb(255, 255, 255);
+    background-color: $dark-grey;
+    border: solid $dark-grey 3px;
+    color: $white;
 }
 </style>

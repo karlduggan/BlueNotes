@@ -14,8 +14,11 @@
             </div>
 
             <div class="right">
-                <DynamicStatusButtom :status="status"/>
-                <button id="removeButton" @click="deleteEntry()">Remove</button>
+                <div class="status-container">
+                    <DynamicStatusButtom :status="status"/>
+                </div>
+                
+                <!--button id="removeButton" @click="deleteEntry()">Remove</button-->
             </div> 
             </div>
     </div>
@@ -68,8 +71,15 @@ export default {
 
 }
 .right {
-width: 100px;
+width: 150px;
+position: relative;
 }
+.status-container {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 15px;
+}
+
 .container {
  width: 350px;
 }
@@ -78,20 +88,20 @@ width: 100px;
     margin-bottom: 5px;
     padding: 5px;
     width: 100%;
-    border-bottom: solid 2px rgb(235, 235, 235);;
+    border-bottom: solid 2px $light-grey;;
 }
 .title-container {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 800;
-    color:rgb(149, 149, 149);
+    color: $blue;
 }
 
 header {
     font-size: 11px;
-    color:rgb(187, 187, 187);
+    color: $dark-grey;
 }
 .content-container {
-    color:rgb(169, 169, 169);
+    color: $dark-grey;
 }
 #removeButton {
     font-family: sans-serif;

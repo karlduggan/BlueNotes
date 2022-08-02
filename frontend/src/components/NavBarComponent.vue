@@ -1,6 +1,6 @@
 <template>
     <nav>
-        <h3>{{title}}</h3>
+        <h1>{{title}}</h1>
     </nav>
 </template>
 
@@ -14,13 +14,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-h3 {
-    color: $green;
+h1 {
+    color: $blue;
     margin: 0;
+    padding: 15px;
 }
 nav {
     background-color: $light-grey;
-    height: 100px;
+    
     width: 100%;
 }
 </style>
