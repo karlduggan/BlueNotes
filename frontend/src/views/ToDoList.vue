@@ -29,9 +29,6 @@ h3 {
   text-align: center;
   color: rgb(134, 134, 134)
 }
-.app-container {
-
-}
 .top {
   display: flex;
   justify-content: center;
@@ -40,13 +37,5 @@ h3 {
   display: flex;
   justify-content: center;
 }
-#app {
-  
-  font-family:  sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  
- 
 
-}
 </style>

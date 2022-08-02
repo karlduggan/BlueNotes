@@ -45,7 +45,7 @@ export default {
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 button {
     font-family: sans-serif;
     border: none;
