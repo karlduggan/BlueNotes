@@ -1,33 +1,62 @@
 <template>
-    <div class="container">
-          <div class="entry">
-            <div class="left">
-                <header>
-                        <p>{{timestamp}}</p>
-                </header>
-                <div class="title-container">
-                    <p>{{title}}</p>
-                </div>
-                <div class="content-container">
-                    <p>{{content}}</p>
-                </div>
-            </div>
+    <div class="entry-container">
 
-            <div class="right">
-                <div class="status-container">
-                    <DynamicStatusButtom :status="status"/>
+        <div class="entry-wrapper">
+
+                <!-- Header Row STARTS-->
+                <div class="header-row">
+                    <div id="title"><p>{{title}}</p></div>
+
+                    <!-- View Details BTN STARTS -->
+                    <div class="view-details" @click="showDrop = !showDrop">
+                        <p>View Details</p>
+
+                    </div>
+                    <!-- View Details BTN ENDS -->
+
+                    <!-- Due Date STARTS -->
+                    <div class="due-date">
+                        <p>22-10-2022</p>
+                    </div>
+                    <!-- Due Date ENDS -->
+                    
+                    <div class="status-container">
+                        <DynamicStatusButtom :status="status"/>
+                    </div>
                 </div>
+                <!-- Header Row ENDS -->
+
+                
+                <!-- Dropdown Container BEGINS -->
+                <transition name="fade">
+                    <div v-if="showDrop" class="dropdown-container">
+
+                        <div class="time-stamp">
+                            <p>{{timestamp}}</p>
+                        </div>
+                        <div class="content-container">
+                            <p>{{content}}</p>
+                        </div>
+                    </div>
+                </transition>
+                <!-- Dropdown Container ENDS -->
+            </div>    
                 
                 <!--button id="removeButton" @click="deleteEntry()">Remove</button-->
-            </div> 
-            </div>
     </div>
 </template>
 
 <script>
+import { ref } from 'vue';
 import DynamicStatusButtom from './DynamicStatusButtom.vue'
 
 export default {
+    setup(){
+        const showDrop = ref(false);
+        return {
+            showDrop
+        }
+    },
     name: "EntryComponent",
     props: [
         'id',
@@ -66,41 +95,87 @@ export default {
 </script>
 
 <style lang="scss" scoped >
-.left {
-    width: 100%;
-
+/* Dropdown transition */
+.fade-enter-from {
+    opacity: 0;
 }
-.right {
-width: 150px;
+.fade-enter-to {
+    opacity: 1;
+}
+.fade-enter-active {
+    transition: all 1s ease;
+}
+.fade-leave-from {}
+.fade-leave-to {}
+.fade-leave-active {}
+
+
+.header-row {
 position: relative;
 }
-.status-container {
-    position: absolute;
-    bottom: 0;
-    margin-bottom: 15px;
-}
-
-.container {
- width: 350px;
-}
-.entry {
-    display: flex;
-    margin-bottom: 5px;
-    padding: 5px;
-    width: 100%;
-    border-bottom: solid 2px $light-grey;;
-}
-.title-container {
+#title {
     font-size: 16px;
     font-weight: 800;
     color: $blue;
+    display:inline-block;
+}
+.view-details {
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    border-radius: 50px;
+    width: 80px;
+    font-size: 11px;
+    font-weight: 500;
+    margin: 15px;
+    text-align: center;
+    color: $p-grey;
+    transition: box-shadow 400ms;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    transition: all 200ms ease-in-out;
+    cursor: pointer;
+}
+.view-details p {
+    margin: 0;
+    padding: 5px;
+}
+.view-details:hover {
+    color: #fff;
+    background-color: $blue;
+    transition: all 200ms ease-in-out;
+    
 }
 
-header {
+.due-date {
+    display:inline-block;
     font-size: 11px;
     color: $dark-grey;
+    position:absolute;
+    left: 67%;
+    margin: 10px;
 }
-.content-container {
+.status-container {
+    margin: 13px;
+    position: relative;
+    float: right;
+    
+}
+.entry-container {
+ padding: 5px;
+ box-shadow: 0px 10px 8px -6px rgba(0,0,0,0.1);
+ margin: 25px;
+ background-color: #fff;
+}
+.entry-wrapper {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.dropdown-container {
+    color: $dark-grey;
+}
+.time-stamp {
+     font-size: 11px;
     color: $dark-grey;
 }
 #removeButton {

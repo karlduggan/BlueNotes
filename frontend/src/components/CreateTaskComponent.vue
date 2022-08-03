@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+        
         <div class="inside-container">
                 <input type="text" v-model="title" placeholder="Title..."/>
                 <textarea type="text" v-model="content" placeholder="More Detail..."/>  
@@ -9,8 +10,17 @@
 </template>
 
 <script>
-
+import { ref } from "vue";
 export default {
+    components : {
+    
+    },
+    setup() {
+        const dateSelected = ref(null);
+        return {
+            dateSelected
+        }
+    },
     data(){
         return {
             title: "",

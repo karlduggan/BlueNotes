@@ -1,8 +1,7 @@
 <template>
-    <div class="container">
         <div class="list-wrapper">
-            <tbody>
-            <tr class="table-row" v-for="(task, index) in taskList" :key="index.id">
+            <div>
+            <div class="table-row" v-for="(task, index) in taskList" :key="index.id">
                  <EntryComponent 
                  :title="taskList[index].title"
                  :content="taskList[index].content"
@@ -10,12 +9,9 @@
                  :status="taskList[index].status"
                  :id="taskList[index].id"
                  />
-            </tr>
-            </tbody>
+            </div>
+            </div>
         </div>
-        
-
-    </div>
 </template>
 
 <script>
@@ -56,17 +52,14 @@ export default {
 </script>
 
 
-<style lang="scss" scoped>
-.container {
+<style lang="scss" scoped >
 
-   
-}
 .list-wrapper {
-    height: 500px;
-    width: 365px;
+    height: 740px;
+    width: 800px;
     overflow-y: hidden;
-    padding: 20px;
-    border: solid $light-grey 3px;
+    background-color: $background-grey;
+
 }
 .list-wrapper:hover {
     overflow-y: scroll;

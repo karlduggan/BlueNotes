@@ -1,10 +1,12 @@
 <template>
   <div class="app-container">
-    <div class="top">
-      <CreateTaskComponent/>
-    </div>
-    <div class="bottom">
-      <ListTaskComponent/>
+    <div class="wrapper">
+        <div class="left">
+        <CreateTaskComponent/>
+        </div>
+        <div class="right">
+        <ListTaskComponent/>
+        </div>
     </div>
   </div>
 </template>
@@ -29,13 +31,22 @@ h3 {
   text-align: center;
   color: rgb(134, 134, 134)
 }
-.top {
-  display: flex;
-  justify-content: center;
+.app-container {
+   display: flex;
+   justify-content: center;
+   
 }
-.bottom {
-  display: flex;
-  justify-content: center;
+.wrapper {
+    display: flex;
+}
+.left {
+  border: 2px solid $light-grey;
+}
+.right {
+position: relative;
+right: 0;
+border: 2px solid $light-grey;
+
 }
 
 </style>

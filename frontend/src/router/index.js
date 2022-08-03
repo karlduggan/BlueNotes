@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 // Import the home page for router
 import HomePage from '@/views/HomePage.vue';
 import ToDoList from '@/views/ToDoList';
+import DevPage from '@/views/DevPage';
 
 const routes = [
     {
@@ -13,6 +14,11 @@ const routes = [
         path: '/todo-list', 
         name: 'ToDoList', 
         component: ToDoList
+    },
+    {
+        path: '/dev', 
+        name: 'DevPage', 
+        component: DevPage
     }
 ]
 
