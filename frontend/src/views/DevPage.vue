@@ -2,31 +2,35 @@
     <div>
         <h1>Welcome to the Dev Page</h1>
 
-        <input v-model="dateSelected" type="date" id="calendar" name="birthday">
+
+        <Datepicker v-model="date"></Datepicker>
         <button @click="getDate">Click</button>
     </div>
 
 </template>
 
 <script>
+import Datepicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css'
+
 export default {
     setup() {
         return {
-
+            
         }
     },
     components: {
-
+        Datepicker
     },
     name: 'DevPage',
     data() {
         return {
-            dateSelected: ""
+            date: null,
         }
     },
     methods: {
         getDate: function() {
-            console.log(this.dateSelected);
+            console.log(this.date);
         }
     }
 }

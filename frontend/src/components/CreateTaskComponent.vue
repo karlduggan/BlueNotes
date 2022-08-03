@@ -1,24 +1,28 @@
 <template>
     <div class="container">
-        
+
         <div class="inside-container">
                 <input type="text" v-model="title" placeholder="Title..."/>
                 <textarea type="text" v-model="content" placeholder="More Detail..."/>  
+                <p>Date Due:</p>
+                <Datepicker v-model="date"></Datepicker>
                 <button @click="CreateTask()">Submit</button>
         </div>
     </div>
 </template>
 
 <script>
+import Datepicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css'
 import { ref } from "vue";
 export default {
     components : {
-    
+        Datepicker,
     },
     setup() {
-        const dateSelected = ref(null);
+        const date = ref(null);
         return {
-            dateSelected
+            date
         }
     },
     data(){
