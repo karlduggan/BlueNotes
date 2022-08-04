@@ -2,16 +2,14 @@
     <div>
         <h1>Welcome to the Dev Page</h1>
 
-
-        <Datepicker v-model="date"></Datepicker>
-        <button @click="getDate">Click</button>
+        <PrioritySelectComponent></PrioritySelectComponent>
     </div>
 
 </template>
 
 <script>
-import Datepicker from '@vuepic/vue-datepicker';
-import '@vuepic/vue-datepicker/dist/main.css'
+import PrioritySelectComponent from '@/components/PrioritySelectComponent.vue'
+
 
 export default {
     setup() {
@@ -20,19 +18,17 @@ export default {
         }
     },
     components: {
-        Datepicker
-    },
+    PrioritySelectComponent
+},
     name: 'DevPage',
     data() {
         return {
-            date: null,
+       
         }
     },
     methods: {
-        getDate: function() {
-            console.log(this.date);
-        }
-    }
+        
+}
 }
 </script>
 

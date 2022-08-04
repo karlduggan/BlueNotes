@@ -106,11 +106,17 @@ input {
     padding: 10px;
     width: 100%;
     font-size: 18px;
-    border: solid $light-grey 3px;
+    border: solid $border-color 1px;
+    border-radius: 4px;
     color: $dark-grey;
     outline: none;
     position: relative;
     box-sizing: border-box;
+    transition: border-color 500ms ease;
+}
+input:hover {
+    border-color: $border-color-hover;
+    transition: border-color 500ms ease;
 }
 textarea {
     padding: 10px;
@@ -119,13 +125,17 @@ textarea {
     width:100%;
     font-size: 14px;
     font-family: sans-serif;
-    border: solid $light-grey 3px;
+    border: solid $border-color 1px;
+    border-radius: 4px;
     color: $dark-grey;
     outline: none;
     height: 80px;
     resize: none;
-
-
+    transition: border-color 500ms ease;
+}
+textarea:hover {
+    border-color: $border-color-hover;
+    transition: border-color 500ms ease;
 }
 button {
     width: 100%;
