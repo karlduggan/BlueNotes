@@ -4,20 +4,36 @@
         <div class="inside-container">
                 <input type="text" v-model="title" placeholder="Title..."/>
                 <textarea type="text" v-model="content" placeholder="More Detail..."/>  
-                <p>Date Due:</p>
-                <Datepicker v-model="date"></Datepicker>
+                <div class="priority-and-dates">
+                    <div class="block1">
+                        <PrioritySelectComponent/>
+                    </div>
+                    <div class="block2">
+                        <Datepicker 
+                        date-fns="dd-MM-yyyy" 
+                        :enableTimePicker="false" 
+                        dark="true" 
+                        calendarClassName="datepicker-class" 
+                        v-model="date">
+                        </Datepicker>     
+                    </div>
+                    
+                </div>
+                
                 <button @click="CreateTask()">Submit</button>
         </div>
     </div>
 </template>
 
 <script>
+import PrioritySelectComponent from './PrioritySelectComponent.vue';
 import Datepicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css'
 import { ref } from "vue";
 export default {
     components : {
         Datepicker,
+        PrioritySelectComponent,
     },
     setup() {
         const date = ref(null);
@@ -90,10 +106,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.priority-and-dates {
+  margin-top: 10px;
+  display: flex;
+}
+.block1 {
+    display: block;
+    margin-right: 10px;
+}
+.block2 {
+    display: block;
+    width: 100%;
+}
 
 .container {
-    width: 430px;
-    padding: 10px;
+ 
+ 
 }
 .inside-container {
     width: 100%;
@@ -106,9 +134,11 @@ input {
     padding: 10px;
     width: 100%;
     font-size: 18px;
-    border: solid $border-color 1px;
+    border: solid $border-color-1 1px;
+    background-color: $background-color;
+    color: #fff;
     border-radius: 4px;
-    color: $dark-grey;
+   
     outline: none;
     position: relative;
     box-sizing: border-box;
@@ -118,6 +148,9 @@ input:hover {
     border-color: $border-color-hover;
     transition: border-color 500ms ease;
 }
+input::placeholder {
+    color: $white;
+}
 textarea {
     padding: 10px;
     margin-top: 15px;
@@ -125,9 +158,10 @@ textarea {
     width:100%;
     font-size: 14px;
     font-family: sans-serif;
-    border: solid $border-color 1px;
+    border: solid $border-color-1 1px;
+    background-color: $background-color;
+    color: $white;
     border-radius: 4px;
-    color: $dark-grey;
     outline: none;
     height: 80px;
     resize: none;
@@ -137,19 +171,28 @@ textarea:hover {
     border-color: $border-color-hover;
     transition: border-color 500ms ease;
 }
+textarea::placeholder {
+    color: $white;
+}
 button {
     width: 100%;
     padding: 15px;
     margin-top: 15px;
-    border: solid $light-grey 3px;
-    background-color: $light-grey;
+    border: solid $border-color-1 1px;
+    border-radius: 5px;
+    background-color: $background-color-2;
     font-weight: 800;
-    color: $dark-grey;
+    color: $white;
     cursor: pointer;
 }
 button:hover {
-    background-color: $dark-grey;
-    border: solid $dark-grey 3px;
+    background-color: $border-color-2;
+    border: solid $dark-grey 1px;
     color: $white;
 }
+.datepicker-class {
+    background-color: $background-color-3;
+    border-color: #fff;
+}
+
 </style>

@@ -34,18 +34,22 @@ h3 {
 .app-container {
    display: flex;
    justify-content: center;
+    background-color: $background-color-3;
+
    
 }
 .wrapper {
     display: flex;
 }
 .left {
-  border: 2px solid $light-grey;
+  padding: 15px;
+  background-color: $background-color-3;
 }
 .right {
 position: relative;
 right: 0;
-border: 2px solid $light-grey;
+border-left: solid 1px $border-color-1;
+background-color: $background-color;
 
 }
 

@@ -2,9 +2,10 @@
   <div id="app" fluid>
     <!-- Nav Bar -->
     <NavBarComponent title="Vue and Django API Testing"/>
+    
     <!-- Router Links -->
-      <router-link to='/todo-list'>ToDo List</router-link>
-      <router-link to='/dev'>Dev Page</router-link>
+      <!--router-link to='/todo-list'>ToDo List</router-link-->
+      <!--router-link to='/dev'>Dev Page</router-link-->
       <!-- Router View -->
       <router-view></router-view>
 

@@ -27,22 +27,30 @@ select {
   appearance: none;
   background-color: transparent;
   border: none;
-  padding: 0 1em 0 0;
+  color: $white;
+  text-align: center;
   margin: 0;
-  width: 100%;
+  width: 100px;
   font-family: inherit;
   font-size: inherit;
   cursor: inherit;
   line-height: inherit;
-  border: 1px solid $border-color;
+  border: 1px solid $border-color-1;
   border-radius: 4px;
   transition: border-color 500ms ease;
-  padding: 5px;
+  padding: 7px;
   
 }
 select:hover {
     border-color: $border-color-hover;
     transition: border-color 500ms ease;
+
+}
+select:focus {
+    outline: none;
+}
+.container {
+
 
 }
 

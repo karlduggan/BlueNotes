@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <body>
         <h1>Home Page Testing</h1>
-    </div>
+    </body>
 
 </template>
 

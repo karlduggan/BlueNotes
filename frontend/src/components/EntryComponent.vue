@@ -116,7 +116,7 @@ position: relative;
 #title {
     font-size: 16px;
     font-weight: 800;
-    color: $blue;
+    color: #fff;
     display:inline-block;
 }
 .view-details {
@@ -162,9 +162,12 @@ position: relative;
 }
 .entry-container {
  padding: 5px;
- box-shadow: 0px 10px 8px -6px rgba(0,0,0,0.1);
+ box-shadow: 1px 5px 20px rgba(0, 0, 0, 0.5)  ; 
+-webkit-box-shadow: 1px 5px 20px rgba(0, 0, 0, 0.5)  ; 
+-moz-box-shadow: 1px 5px 20px rgba(0, 0, 0, 0.5)  ; 
  margin: 25px;
- background-color: #fff;
+ background-color: $background-color-2;
+ border: 1px solid $border-color-1;
 }
 .entry-wrapper {
     padding-left: 25px;
@@ -175,7 +178,7 @@ position: relative;
     color: $dark-grey;
 }
 .time-stamp {
-     font-size: 11px;
+    font-size: 11px;
     color: $dark-grey;
 }
 #removeButton {
