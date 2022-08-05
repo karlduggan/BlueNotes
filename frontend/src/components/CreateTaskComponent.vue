@@ -63,7 +63,9 @@ export default {
                 "timestamp": this.timeStamp()
             };
             console.log(this.title)
-
+            // Emit to list 
+            
+            // Send to django
             const url = "http://127.0.0.1:8000/api/task-create/"
             fetch(url, {
                 method: 'POST',
