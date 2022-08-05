@@ -1,13 +1,14 @@
 <template>
         <div class="list-wrapper">
             <div>
-            <div class="table-row" v-for="(task, index) in taskList" :key="index.id">
+            <div class="table-row" v-for="(task, index) in taskListData" :key="index.id">
                  <EntryComponent 
-                 :title="taskList[index].title"
-                 :content="taskList[index].content"
-                 :timestamp="taskList[index].timestamp"
-                 :status="taskList[index].status"
-                 :id="taskList[index].id"
+                 :title="taskListData[index].title"
+                 :content="taskListData[index].content"
+                 :timestamp="taskListData[index].timestamp"
+                 :dateToComplete="taskListData[index].dateToComplete"
+                 :status="taskListData[index].status"
+                 :id="taskListData[index].id"
                  />
             </div>
             </div>
@@ -20,40 +21,23 @@ export default {
     name: "ListTaskComponent",
     components: {
     EntryComponent
-},
+    },
     data(){
         return {
             taskList: []
         }
     },
-    methods: {
-        updateTaskList: function(){
-            const url = "http://127.0.0.1:8000/api/task-list/";
-            const options =  {
-            method: 'GET',
-            credentials: 'same-origin',
-            headers: {'Content-Type': 'application/json'
-            }}
-            fetch(url, options)
-            .then(response => response.json())
-            .then(data => this.taskList = data)
-            .catch( error => console.log(error.message))
-
-            // Reverse the task list 
-            this.taskList = this.taskList.reverse();
+    computed: {
+        taskListData(){
+            return this.$store.state.taskList;
         }
-        
     },
    
-    mounted() {
-        this.updateTaskList()
-    }
 }
 </script>
 
 
 <style lang="scss" scoped >
-
 .list-wrapper {
     height: 740px;
     width: 800px;
@@ -62,7 +46,12 @@ export default {
 
 }
 .list-wrapper:hover {
-    overflow-y: scroll;
+    overflow: auto;
+    overflow: overlay;
+}
+.list-wrapper::-webkit-scrollbar {
+    background-color: $background-color-4;
+    position: absolute;
 }
 
 

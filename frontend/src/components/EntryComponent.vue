@@ -16,7 +16,7 @@
 
                     <!-- Due Date STARTS -->
                     <div class="due-date">
-                        <p>22-10-2022</p>
+                        <p>{{dateToComplete}}</p>
                     </div>
                     <!-- Due Date ENDS -->
                     
@@ -63,7 +63,9 @@ export default {
         'title',
         'content',
         'status', 
-        'timestamp'
+        'timestamp',
+        'dateToComplete',
+        'priority'
     ],
     components: {
     DynamicStatusButtom

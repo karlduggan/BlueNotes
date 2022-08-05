@@ -8,6 +8,8 @@ class Task(models.Model):
     completed = models.BooleanField(default=False)
     status = models.CharField(max_length=50, default='ToDo')
     timestamp = models.CharField(max_length=100, default="None")
+    priority = models.CharField(max_length=10, default="None")
+    dateToComplete = models.CharField(max_length=100, default=False)
     
     def __str__(self):
         return self.title

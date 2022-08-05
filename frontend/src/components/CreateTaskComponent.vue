@@ -6,15 +6,16 @@
                 <textarea type="text" v-model="content" placeholder="More Detail..."/>  
                 <div class="priority-and-dates">
                     <div class="block1">
-                        <PrioritySelectComponent/>
+                        <PrioritySelectComponent 
+                        @change="selectPriority($event)"/>
                     </div>
                     <div class="block2">
                         <Datepicker 
-                        date-fns="dd-MM-yyyy" 
+                        placeholder="Date to complete"
                         :enableTimePicker="false" 
-                        dark="true" 
+                        :dark="true" 
                         calendarClassName="datepicker-class" 
-                        v-model="date">
+                        v-model="dateSelected">
                         </Datepicker>     
                     </div>
                     
@@ -35,19 +36,40 @@ export default {
         Datepicker,
         PrioritySelectComponent,
     },
+    emits: {
+        'sendData': null
+        },
     setup() {
-        const date = ref(null);
+        const dateSelected = ref(null);
         return {
-            date
+            dateSelected
         }
     },
     data(){
         return {
             title: "",
-            content: ""
+            content: "",
+            priority: "",
+
+        }
+    },
+    computered: {
+        taskList() {
+            return this.$store.state.taskList;
         }
     },
     methods: {
+        selectPriority(event) {
+        this.priority = event.target.value;
+        },
+        getDatepickerValue: function() {
+            return this.date
+        },
+        sendData: function(task_data){
+            // task data is a dictionary
+            this.$emit('sending-data', task_data)
+    
+        },
         formatInput: function(string){
         // This method will return the same string with the first letter uppercased
         return string.charAt(0).toUpperCase() + string.slice(1);
@@ -60,11 +82,15 @@ export default {
                 "content": this.formatInput(this.content), 
                 "completed": "False", 
                 "status": "To Do",
-                "timestamp": this.timeStamp()
+                "timestamp": this.timeStamp(),
+                "priority": this.priority,
+                "dateToComplete": this.getDateToComplet()
             };
-            console.log(this.title)
-            // Emit to list 
+            console.log(data)
             
+            // State management "store.index.js" send task data
+           this.$store.state.taskList.push(data);
+           
             // Send to django
             const url = "http://127.0.0.1:8000/api/task-create/"
             fetch(url, {
@@ -72,7 +98,7 @@ export default {
                 credentials: 'same-origin',
                 body: JSON.stringify(data),
                 headers: {
-                    'Content-type': 'application/json; charset=UTF-8',
+                'Content-type': 'application/json; charset=UTF-8',
                 },
                
             })
@@ -87,11 +113,11 @@ export default {
             this.title = "";
             this.content = "";
         },
+
         timeStamp: function(){
         var d = new Date();
-        //Hour
         var year = d.getFullYear();
-        var month = d.getMonth();
+        var month = d.getMonth() + 1;
         var day = d.getDate();
         var hour = d.getHours();
         var minute = d.getMinutes();
@@ -99,6 +125,11 @@ export default {
 
         return `${hour}:${minute}:${seconds} ${day}-${month}-${year}`;
 
+    },
+    getDateToComplet: function(){
+        const ddate = this.dateSelected;
+   
+        return `${ddate.getDate()}-${ddate.getMonth() + 1}-${ddate.getFullYear()}`
     }
         
 
