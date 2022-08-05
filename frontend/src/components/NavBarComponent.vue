@@ -15,12 +15,13 @@ export default {
 
 <style lang="scss" scoped>
 h1 {
-    color: $blue;
+    color: $white;
     margin: 0;
     padding: 15px;
 }
 nav {
-    background-color: $light-grey;
+    background-color: $background-color-3;
+    border-bottom: 1px solid $border-color-1;
     
     width: 100%;
 }

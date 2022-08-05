@@ -4,34 +4,72 @@
         <div class="inside-container">
                 <input type="text" v-model="title" placeholder="Title..."/>
                 <textarea type="text" v-model="content" placeholder="More Detail..."/>  
-                <p>Date Due:</p>
-                <Datepicker v-model="date"></Datepicker>
+                <div class="priority-and-dates">
+                    <div class="block1">
+                        <PrioritySelectComponent 
+                        @change="selectPriority($event)"/>
+                    </div>
+                    <div class="block2">
+                        <Datepicker 
+                        placeholder="Date to complete"
+                        :enableTimePicker="false" 
+                        :dark="true" 
+                        calendarClassName="datepicker-class" 
+                        v-model="dateSelected">
+                        </Datepicker>     
+                    </div>
+                    
+                </div>
+                
                 <button @click="CreateTask()">Submit</button>
         </div>
     </div>
 </template>
 
 <script>
+import PrioritySelectComponent from './PrioritySelectComponent.vue';
 import Datepicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css'
 import { ref } from "vue";
 export default {
     components : {
         Datepicker,
+        PrioritySelectComponent,
     },
+    emits: {
+        'sendData': null
+        },
     setup() {
-        const date = ref(null);
+        const dateSelected = ref(null);
         return {
-            date
+            dateSelected
         }
     },
     data(){
         return {
             title: "",
-            content: ""
+            content: "",
+            priority: "",
+
+        }
+    },
+    computered: {
+        taskList() {
+            return this.$store.state.taskList;
         }
     },
     methods: {
+        selectPriority(event) {
+        this.priority = event.target.value;
+        },
+        getDatepickerValue: function() {
+            return this.date
+        },
+        sendData: function(task_data){
+            // task data is a dictionary
+            this.$emit('sending-data', task_data)
+    
+        },
         formatInput: function(string){
         // This method will return the same string with the first letter uppercased
         return string.charAt(0).toUpperCase() + string.slice(1);
@@ -44,17 +82,23 @@ export default {
                 "content": this.formatInput(this.content), 
                 "completed": "False", 
                 "status": "To Do",
-                "timestamp": this.timeStamp()
+                "timestamp": this.timeStamp(),
+                "priority": this.priority,
+                "dateToComplete": this.getDateToComplet()
             };
-            console.log(this.title)
-
+            console.log(data)
+            
+            // State management "store.index.js" send task data
+           this.$store.state.taskList.push(data);
+           
+            // Send to django
             const url = "http://127.0.0.1:8000/api/task-create/"
             fetch(url, {
                 method: 'POST',
                 credentials: 'same-origin',
                 body: JSON.stringify(data),
                 headers: {
-                    'Content-type': 'application/json; charset=UTF-8',
+                'Content-type': 'application/json; charset=UTF-8',
                 },
                
             })
@@ -69,11 +113,11 @@ export default {
             this.title = "";
             this.content = "";
         },
+
         timeStamp: function(){
         var d = new Date();
-        //Hour
         var year = d.getFullYear();
-        var month = d.getMonth();
+        var month = d.getMonth() + 1;
         var day = d.getDate();
         var hour = d.getHours();
         var minute = d.getMinutes();
@@ -81,6 +125,11 @@ export default {
 
         return `${hour}:${minute}:${seconds} ${day}-${month}-${year}`;
 
+    },
+    getDateToComplet: function(){
+        const ddate = this.dateSelected;
+   
+        return `${ddate.getDate()}-${ddate.getMonth() + 1}-${ddate.getFullYear()}`
     }
         
 
@@ -90,10 +139,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.priority-and-dates {
+  margin-top: 10px;
+  display: flex;
+}
+.block1 {
+    display: block;
+    margin-right: 10px;
+}
+.block2 {
+    display: block;
+    width: 100%;
+}
 
 .container {
-    width: 430px;
-    padding: 10px;
+ 
+ 
 }
 .inside-container {
     width: 100%;
@@ -106,9 +167,11 @@ input {
     padding: 10px;
     width: 100%;
     font-size: 18px;
-    border: solid $border-color 1px;
+    border: solid $border-color-1 1px;
+    background-color: $background-color;
+    color: #fff;
     border-radius: 4px;
-    color: $dark-grey;
+   
     outline: none;
     position: relative;
     box-sizing: border-box;
@@ -118,6 +181,9 @@ input:hover {
     border-color: $border-color-hover;
     transition: border-color 500ms ease;
 }
+input::placeholder {
+    color: $white;
+}
 textarea {
     padding: 10px;
     margin-top: 15px;
@@ -125,9 +191,10 @@ textarea {
     width:100%;
     font-size: 14px;
     font-family: sans-serif;
-    border: solid $border-color 1px;
+    border: solid $border-color-1 1px;
+    background-color: $background-color;
+    color: $white;
     border-radius: 4px;
-    color: $dark-grey;
     outline: none;
     height: 80px;
     resize: none;
@@ -137,19 +204,28 @@ textarea:hover {
     border-color: $border-color-hover;
     transition: border-color 500ms ease;
 }
+textarea::placeholder {
+    color: $white;
+}
 button {
     width: 100%;
     padding: 15px;
     margin-top: 15px;
-    border: solid $light-grey 3px;
-    background-color: $light-grey;
+    border: solid $border-color-1 1px;
+    border-radius: 5px;
+    background-color: $background-color-2;
     font-weight: 800;
-    color: $dark-grey;
+    color: $white;
     cursor: pointer;
 }
 button:hover {
-    background-color: $dark-grey;
-    border: solid $dark-grey 3px;
+    background-color: $border-color-2;
+    border: solid $dark-grey 1px;
     color: $white;
 }
+.datepicker-class {
+    background-color: $background-color-3;
+    border-color: #fff;
+}
+
 </style>

@@ -6,8 +6,12 @@
         </div>
         <div class="right">
         <ListTaskComponent/>
+    
+        <!--<p>{{ $store.state.taskList }}</p>-->
         </div>
+        
     </div>
+   
   </div>
 </template>
 
@@ -22,7 +26,30 @@ export default {
   components: {
     CreateTaskComponent,
     ListTaskComponent
-}
+},
+data() {
+  return {
+
+  }
+},  
+methods: {
+           fetchData: async function(){
+            const url = "http://127.0.0.1:8000/api/task-list/";
+            const options =  {
+            method: 'GET',
+            credentials: 'same-origin',
+            headers: {'Content-Type': 'application/json'
+            }}
+            let response = await fetch(url, options);
+            let data = await response.json()
+            this.$store.state.taskList = data;
+          
+        }
+},
+
+beforeMount() {
+  this.fetchData()
+},
 }
 </script>
 
@@ -34,18 +61,22 @@ h3 {
 .app-container {
    display: flex;
    justify-content: center;
+    background-color: $background-color-3;
+
    
 }
 .wrapper {
     display: flex;
 }
 .left {
-  border: 2px solid $light-grey;
+  padding: 15px;
+  background-color: $background-color-3;
 }
 .right {
 position: relative;
 right: 0;
-border: 2px solid $light-grey;
+border-left: solid 1px $border-color-1;
+background-color: $background-color;
 
 }
 
