@@ -40,7 +40,7 @@ export default {
 <style lang="scss" scoped >
 .list-wrapper {
     height: 740px;
-    width: 800px;
+    width: 850px;
     overflow-y: hidden;
     background-color: $background-color;
 

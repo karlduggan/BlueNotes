@@ -19,6 +19,10 @@
                         <p>{{dateToComplete}}</p>
                     </div>
                     <!-- Due Date ENDS -->
+
+                    
+                 
+                 
                     
                     <div class="status-container">
                         <DynamicStatusButtom :status="status"/>
