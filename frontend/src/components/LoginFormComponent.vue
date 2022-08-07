@@ -53,8 +53,8 @@ export default {
 <style lang="scss" scoped>
 .form-container {
     background-color: $background-color-3;
-    width: 450px;
-    height: 600px;
+    width: 350px;
+    height: 450px;
     border: 1px solid $border-color-1;
 
     box-shadow: 1px 5px 20px rgba(0, 0, 0, 0.5)  ; 

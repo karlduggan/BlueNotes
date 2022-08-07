@@ -10,6 +10,7 @@ class Task(models.Model):
     timestamp = models.CharField(max_length=100, default="None")
     priority = models.CharField(max_length=10, default="None")
     dateToComplete = models.CharField(max_length=100, default=False)
+    createdBy = models.CharField(max_length=100, default="None")
     
     def __str__(self):
         return self.title

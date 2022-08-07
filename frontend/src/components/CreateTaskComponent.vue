@@ -86,7 +86,8 @@ export default {
                 "status": "To Do",
                 "timestamp": this.timeStamp(),
                 "priority": this.priority,
-                "dateToComplete": this.getDateToComplet()
+                "dateToComplete": this.getDateToComplet(),
+                "createdBy": this.$store.state.username
             };
             console.log(data)
             

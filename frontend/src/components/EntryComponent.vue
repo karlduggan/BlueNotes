@@ -20,12 +20,9 @@
                     </div>
                     <!-- Priority ENDS -->
 
-                    
-                 
-                 
-                    
+                
                     <div class="status-container">
-                        <DynamicStatusButtom :status="status"/>
+                        <DynamicStatusButtom :entryId="id" :status="status"/>
                     </div>
                 </div>
                 <!-- Header Row ENDS -->
@@ -34,9 +31,10 @@
                 <!-- Dropdown Container BEGINS -->
                 <transition name="fade">
                     <div v-if="showDrop" class="dropdown-container">
-
+                        
                         <div class="time-stamp">
                             <p>{{timestamp}}</p>
+                            <p>Task Created By: <b>{{createdBy}}</b></p>
                         </div>
                         <div class="content-container">
                             <p>{{content}}</p>
@@ -47,6 +45,7 @@
             </div>    
                 
                 <!--button id="removeButton" @click="deleteEntry()">Remove</button-->
+                <!--button @click="getID()">Get ID</button-->
     </div>
 </template>
 
@@ -61,6 +60,11 @@ export default {
             showDrop
         }
     },
+    data(){
+        return {
+            newStatus: ""
+        }
+    },
     name: "EntryComponent",
     props: [
         'id',
@@ -69,17 +73,13 @@ export default {
         'status', 
         'timestamp',
         'dateToComplete',
-        'priority'
+        'priority',
+        'createdBy'
     ],
     components: {
     DynamicStatusButtom
 },
-    data(){
-        return {
-            
-
-        }
-    },
+    
     methods: {
         deleteEntry: function(){
          
@@ -96,6 +96,12 @@ export default {
             .then(response => response.json())
             .then(data =>  console.log(data))
             .catch( error => console.log(error.message))
+        },
+        getID: function(){
+            console.log(this.id)
+            setTimeout(() => {
+                console.log("Testing ....")
+            }, 3000);
         }
     }
 
@@ -189,6 +195,7 @@ position: relative;
     font-size: 11px;
     color: $dark-grey;
     border-bottom: solid 1px $border-color-2;
+
 }
 #removeButton {
     font-family: sans-serif;

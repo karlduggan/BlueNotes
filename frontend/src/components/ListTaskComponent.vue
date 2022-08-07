@@ -10,6 +10,7 @@
                  :status="taskListData[index].status"
                  :id="taskListData[index].id"
                  :priority="taskListData[index].priority"
+                 :createdBy="taskListData[index].createdBy"
                  />
             </div>
             </div>

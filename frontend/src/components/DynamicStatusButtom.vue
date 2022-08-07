@@ -12,18 +12,26 @@
 
 export default {
     props : {
-        status: String
+        status: String,
+        entryId: Number
     },
     data() {
         return {
             currentStatus: this.status,
-            currentColor: "#727CF5"
+            currentColor: "#727CF5",
+            changesMade : false,
+            updateActive: false,
+            updateIntervalDuration: 3000
         }
     },
     methods: {
         // On click change the status
         changeStatus: function() {
             this.updateStatusChange(this.currentStatus);
+        },
+        runUpdate: function() {
+         
+            
         },
         updateStatusChange: function(currentStatus) {
             const updateStatus = { 
@@ -34,6 +42,8 @@ export default {
             };
             // Set and update status
             this.currentStatus = updateStatus[currentStatus];
+            console.log(this.entryId)
+            this.runUpdate()
             // Background color update
             switch(this.currentStatus){
                 case "To Do":
