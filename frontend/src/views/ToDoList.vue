@@ -63,6 +63,7 @@ beforeMount() {
   this.fetchData()
 },
 created(){
+  // Work around to have a persistent data and to not loose the username when refreshing the page 
   this.$store.state.username = localStorage.getItem('username')
 },
 }

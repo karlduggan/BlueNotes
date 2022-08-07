@@ -2,7 +2,7 @@
     "id": "0",
     "title": "This is the title",
     "content":"this is the content",
-    "status": "",
-    "completed": ""
+    "status": "toDo",
+    "completed": "False"
     
-    }
+  }
