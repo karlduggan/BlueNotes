@@ -27,12 +27,23 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    )
+}
 
 # Application definition
 
 INSTALLED_APPS = [
     # Third-Party Apps
     'rest_framework',
+    'rest_framework.authtoken',
+    'djoser',
+    
     # Django Apps
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,7 +52,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Local Apps (Your project's apps)
-    'fooApp',
     'api.apps.ApiConfig',
     # add to ： Cross domain components
     'corsheaders' 

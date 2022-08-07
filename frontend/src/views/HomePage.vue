@@ -1,16 +1,20 @@
 <template>
     <body>
-        <h1>Home Page Testing</h1>
+        
     </body>
 
 </template>
 
 <script>
 export default {
-    name: 'HomePage'
+    name: 'LandingPage'
 }
 </script>
 
 <style lang="scss" scoped>
+body {
+    background-color: $background-color;
+    min-height: 90vh;
+}
 
 </style>

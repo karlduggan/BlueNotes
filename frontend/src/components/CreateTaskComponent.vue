@@ -11,6 +11,7 @@
                     </div>
                     <div class="block2">
                         <Datepicker 
+                        :style="{}"
                         placeholder="Date to complete"
                         :enableTimePicker="false" 
                         :dark="true" 
@@ -32,6 +33,7 @@ import Datepicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css'
 import { ref } from "vue";
 export default {
+    inheritAttrs: true,
     components : {
         Datepicker,
         PrioritySelectComponent,
@@ -99,6 +101,7 @@ export default {
                 body: JSON.stringify(data),
                 headers: {
                 'Content-type': 'application/json; charset=UTF-8',
+                'Authorization': 'Token ' + this.$store.state.token
                 },
                
             })
@@ -223,9 +226,11 @@ button:hover {
     border: solid $dark-grey 1px;
     color: $white;
 }
-.datepicker-class {
-    background-color: $background-color-3;
-    border-color: #fff;
+/*.datepicker-class {
+    background-color: $background-color-3 !important;
+    border-color: #fff !important;
+    border: solid $border-color-1 1px !important;
+    border-radius: 4px;
 }
-
+*/
 </style>

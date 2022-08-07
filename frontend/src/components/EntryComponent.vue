@@ -88,7 +88,9 @@ export default {
             const options =  {
             method: 'DELETE',
             credentials: 'same-origin',
-            headers: {'Content-Type': 'application/json'
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Token ' + this.$store.state.token
             }}
             fetch(url, options)
             .then(response => response.json())

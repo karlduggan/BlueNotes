@@ -2,10 +2,37 @@ import { createStore } from "vuex";
 
 export default createStore({
     state: {
+        // Checking authentication
+        token: '',
+        isAuthenticated: false,
+        // Store api request results in the task list
         name: "Testing Vue State Management in store/index.js",
-        taskList: []
+        taskList: [],
+        // Store the username
+        username: ""
     },
     mutations: { // Synchronous
+        // Authentication
+        initializeStore(state) {
+            if (localStorage.getItem('token'))
+                {
+                    state.token = localStorage.getItem('token')
+                    state.isAuthenticated = true
+                }
+            else {
+                state.token = ''
+                state.isAuthenticated = false
+            }
+        },
+        setToken(state, token) {
+            state.token = token
+            state.isAuthenticated = true
+        },
+        removeToken(state) {
+            state.token = ''
+            state.isAuthenticated = false
+        },
+        // Authentication END 
         addTask(state,payload){
             state.taskList.push(payload);
         },
@@ -20,6 +47,13 @@ export default createStore({
         },
         addData(state, payload){
             state.commit('addData', payload)
+        },
+        // Authorization
+        setToken(state, token){
+            state.commit('setToken', token)
+        },
+        removeToken(state){
+            state.commit('removeToken')
         }
 
     },

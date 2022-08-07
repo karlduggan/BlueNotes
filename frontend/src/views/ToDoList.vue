@@ -1,5 +1,5 @@
-<template>
-  <div class="app-container">
+<template >
+  <div class="app-container" v-if="this.$store.state.isAuthenticated">
     <div class="wrapper">
         <div class="left">
         <CreateTaskComponent/>
@@ -17,7 +17,7 @@
 
 <script>
 
-
+import axios from 'axios';
 import CreateTaskComponent from '@/components/CreateTaskComponent.vue';
 import ListTaskComponent from '@/components/ListTaskComponent.vue';
 
@@ -38,7 +38,9 @@ methods: {
             const options =  {
             method: 'GET',
             credentials: 'same-origin',
-            headers: {'Content-Type': 'application/json'
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Token ' + this.$store.state.token
             }}
             let response = await fetch(url, options);
             let data = await response.json()
@@ -46,9 +48,22 @@ methods: {
           
         }
 },
+beforeCreate() {
+  this.$store.commit('initializeStore')
+
+  const token = this.$store.state.token
+  if(token){
+    axios.defaults.headers.common['Authorization'] = "Token " + token
+  }  else {
+    axios.defaults.headers.common['Authorization'] = ''
+  }
+},
 
 beforeMount() {
   this.fetchData()
+},
+created(){
+  this.$store.state.username = localStorage.getItem('username')
 },
 }
 </script>
@@ -61,8 +76,8 @@ h3 {
 .app-container {
    display: flex;
    justify-content: center;
-    background-color: $background-color-3;
-
+   background-color: $background-color-3;
+   min-height: 90vh;
    
 }
 .wrapper {

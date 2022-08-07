@@ -33,6 +33,7 @@ export default {
             return this.$store.state.taskList;
         }
     },
+
    
 }
 </script>
@@ -40,7 +41,7 @@ export default {
 
 <style lang="scss" scoped >
 .list-wrapper {
-    height: 740px;
+    height: 800px;
     width: 850px;
     overflow-y: hidden;
     background-color: $background-color;
