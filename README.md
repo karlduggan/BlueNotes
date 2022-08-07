@@ -1,3 +1,13 @@
+
+<div id="header" align="center">
+       <img src="https://github.com/karlduggan/Vue-Django-ToDoList/blob/main/frontend/src/assets/bluenotes_logo.png" height=100 width=170>
+</div>
+
+# BluNotes
+BlueNotes is a lightweight development tool for colloabation within a small team
+
+
+
 # Vue-Django ToDo List
  
 ### Django Notes
