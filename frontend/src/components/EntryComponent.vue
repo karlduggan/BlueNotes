@@ -14,11 +14,11 @@
                     </div>
                     <!-- View Details BTN ENDS -->
 
-                    <!-- Due Date STARTS -->
-                    <div class="due-date">
-                        <p>{{dateToComplete}}</p>
+                    <!-- Priority STARTS -->
+                    <div class="priority">
+                        <p>{{priority}}</p>
                     </div>
-                    <!-- Due Date ENDS -->
+                    <!-- Priority ENDS -->
 
                     
                  
@@ -152,7 +152,7 @@ position: relative;
     
 }
 
-.due-date {
+.priority {
     display:inline-block;
     font-size: 11px;
     color: $dark-grey;
@@ -186,6 +186,7 @@ position: relative;
 .time-stamp {
     font-size: 11px;
     color: $dark-grey;
+    border-bottom: solid 1px $border-color-2;
 }
 #removeButton {
     font-family: sans-serif;

@@ -9,6 +9,7 @@
                  :dateToComplete="taskListData[index].dateToComplete"
                  :status="taskListData[index].status"
                  :id="taskListData[index].id"
+                 :priority="taskListData[index].priority"
                  />
             </div>
             </div>
