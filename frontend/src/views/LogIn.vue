@@ -1,14 +1,16 @@
 <template>
     <body>
         <div class="container">
-            <LoginFormComponent/>
+           
+            <LoginForm/>
         </div>
     </body>
 </template>
 
 <script>
 
-import LoginFormComponent from '@/components/LoginFormComponent.vue'
+
+import LoginForm from '@/components/LoginForm.vue';
 
 export default {
     name: "LogIn",
@@ -20,7 +22,7 @@ export default {
     methods: {
 
     },
-    components: { LoginFormComponent }
+    components: { LoginForm }
 }
 </script>
 

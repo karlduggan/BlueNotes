@@ -157,7 +157,6 @@ position: relative;
     color: #fff;
     background-color: $blue;
     transition: all 200ms ease-in-out;
-    
 }
 
 .priority {

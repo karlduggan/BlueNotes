@@ -1,6 +1,6 @@
 <template>
     <nav>
-        <img src="../assets/bluenotes_logo.png" alt="" srcset="" width="100">
+        <img src="../assets/bluenotes_logo.png" alt="" srcset="" width="70">
         <div class="login-container" >
             <!-- Check user is authorized to access -->
             <div class="login-sign-out" v-if="!this.$store.state.isAuthenticated">
@@ -68,7 +68,7 @@ img {
 .login-container {
     color: $white;
     position: absolute;
-    padding: 16px;
+    padding: 8px;
     right: 20px;
 
 }
