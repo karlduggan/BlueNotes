@@ -5,6 +5,10 @@
 
 # BluNotes
 BlueNotes is a lightweight development tool for colloabation within a small team
+- Create projects (When a project is created a unique token is made which can be sent for others to join project)
+- Create tickets within a project
+- Assign tickets to those collaborating
+- Creator of project is admin by default and only admin can generate project tokens
 
 
 
