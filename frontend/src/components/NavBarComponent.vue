@@ -32,6 +32,8 @@ export default {
     methods: {
         signOut: function() {
             this.$store.dispatch('removeToken')
+            // Remove token from local storageß
+            localStorage.removeItem('token')
             // Remove username from local storage
             localStorage.removeItem('username')
             // Redirect the browser to the home landing page

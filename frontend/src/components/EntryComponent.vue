@@ -34,7 +34,7 @@
                         
                         <div class="time-stamp">
                             <p>{{timestamp}}</p>
-                            <p>Task Created By: <b>{{createdBy}}</b></p>
+                            <p>Created By: <b>{{createdBy}}</b></p>
                         </div>
                         <div class="content-container">
                             <p>{{content}}</p>
