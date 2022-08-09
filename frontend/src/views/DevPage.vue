@@ -6,13 +6,14 @@
       <button @click="testState">Click Test</button>
       <button @click="fetchData">Click fecth data</button>
 
-      <LoginForm></LoginForm>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<img src="@/assets/comment_icon.svg" alt="" srcset="">
     </div>
 
 </template>
 
 <script>
-import LoginForm from '@/components/LoginForm.vue'
+
 
 
 
@@ -24,7 +25,7 @@ export default {
     },
     
     components: {
-    LoginForm
+
 },
     name: 'DevPage',
     data() {

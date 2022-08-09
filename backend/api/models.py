@@ -1,5 +1,6 @@
+from tkinter import CASCADE
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 
 class Task(models.Model):
@@ -18,12 +19,21 @@ class Task(models.Model):
 """
 class Project(models.Model):
     title = models.CharField(max_length=100)
+    
     def __str__(self):
         return self.title
         
 class Comment(models.Model):
-    snippit = models.CharField(max_length=100)
+    ticket = models.ForeignKey(User, default=None, on_delete=CASCADE)
+    thumb = models.ImageField(default='default.png', blank=True)
     comment = models.TextFields()
     
-        
+    def __str__(self):
+        return self.title
+    
+    def snippet(self):
+        return self.comment[:50] + '...'
+"""
+"""
+        https://www.youtube.com/watch?v=zJWhizYFKP0&ab_channel=TheNetNinja
 """
