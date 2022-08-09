@@ -2,12 +2,13 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .serializers import TaskSerializer
+
+from .serializers import TaskSerializer, ProjectSerializer, CommentSerializer
 from django.views.decorators.csrf import csrf_exempt
 
 from rest_framework.permissions import IsAuthenticated
 
-from .models import Task
+from .models import Task, Project, Comment
 
 # Create your views here.
 
@@ -63,3 +64,11 @@ def taskDelete(request, pk):
     task.delete()
     
     return Response("Deleted Successfully")
+
+"""
+PROJECT VIEW
+"""
+
+"""
+COMMENT VIEW
+"""

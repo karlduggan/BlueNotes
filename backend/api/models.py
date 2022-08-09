@@ -1,9 +1,17 @@
 from tkinter import CASCADE
 from django.db import models
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
 # Create your models here.
 
+
+class Project(models.Model):
+    title = models.CharField(max_length=100)
+    
+    def __str__(self):
+        return self.title
+
 class Task(models.Model):
+    projectID = models.ForeignKey(Project, default=None, on_delete=models.CASCADE, null=True, blank=True)
     title = models.CharField(max_length=100)
     content = models.TextField(max_length=1000, default='None')
     completed = models.BooleanField(default=False)
@@ -15,25 +23,19 @@ class Task(models.Model):
     
     def __str__(self):
         return self.title
+#Foreign key must reference a primary key or unique constraint
 
-"""
-class Project(models.Model):
-    title = models.CharField(max_length=100)
-    
-    def __str__(self):
-        return self.title
         
 class Comment(models.Model):
-    ticket = models.ForeignKey(User, default=None, on_delete=CASCADE)
+    ticketID = models.ForeignKey(Task, default=None, on_delete=models.CASCADE, null=True, blank=True)
     thumb = models.ImageField(default='default.png', blank=True)
-    comment = models.TextFields()
+    comment = models.TextField(max_length=1000, default='None')
     
     def __str__(self):
         return self.title
-    
     def snippet(self):
         return self.comment[:50] + '...'
-"""
+
 """
         https://www.youtube.com/watch?v=zJWhizYFKP0&ab_channel=TheNetNinja
 """
