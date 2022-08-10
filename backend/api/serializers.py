@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Task, Project, Comment
+from .models import Ticket, Project, Comment
 
 
 class ProjectSerializer(serializers.ModelSerializer):
@@ -8,9 +8,9 @@ class ProjectSerializer(serializers.ModelSerializer):
         model = Project
         fields = '__all__' 
 
-class TaskSerializer(serializers.ModelSerializer):
+class TicketSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Task
+        model = Ticket
         fields = '__all__' 
 
 class CommentSerializer(serializers.ModelSerializer):

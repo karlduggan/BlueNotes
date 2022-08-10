@@ -5,6 +5,10 @@ from . import views
 Need completing for comments and projects
 - Get all commment from a ticket
 - Get all tickets from a project 
+
+pk = primary key
+<int:pk>
+<str:pk>
 """
 urlpatterns = [
     path('', views.apiOverview, name='api-overview'),
@@ -14,12 +18,12 @@ urlpatterns = [
     path('project-read/<str:pk>/', views.projectRead, name='project-read'),
     path('project-update/<str:pk>/', views.projectUpdate, name="project-update"),
     path('project-delete/<str:pk>/', views.projectDelete, name="project-delete"),
-    # Tasks / Tickets CRUD
-    path('task-list/', views.taskList, name='task-list'),
-    path('task-create/', views.taskCreate, name="task-create"),
-    path('task-read/<str:pk>/', views.taskRead, name='task-read'),
-    path('task-update/<str:pk>/', views.taskUpdate, name="task-update"),
-    path('task-delete/<str:pk>/', views.taskDelete, name="task-delete"),
+    # Tickets CRUD
+    path('ticket-list/', views.ticketList, name='ticket-list'),
+    path('ticket-create/', views.ticketCreate, name="ticket-create"),
+    path('ticket-read/<str:pk>/', views.ticketRead, name='ticket-read'),
+    path('ticket-update/<str:pk>/', views.ticketUpdate, name="ticket-update"),
+    path('ticket-delete/<str:pk>/', views.ticketDelete, name="ticket-delete"),
     # Comments CRUD 
     path('comment-list/', views.commentList, name='comment-list'),
     path('comment-create/', views.commentCreate, name="comment-create"),
