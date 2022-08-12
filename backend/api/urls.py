@@ -20,12 +20,14 @@ urlpatterns = [
     path('project-delete/<str:pk>/', views.projectDelete, name="project-delete"),
     # Tickets CRUD
     path('ticket-list/', views.ticketList, name='ticket-list'),
+    path('ticket-list-by-project-id/<str:fk>/', views.ticketListByProjectID, name="ticket-list-by-project-id"),
     path('ticket-create/', views.ticketCreate, name="ticket-create"),
     path('ticket-read/<str:pk>/', views.ticketRead, name='ticket-read'),
     path('ticket-update/<str:pk>/', views.ticketUpdate, name="ticket-update"),
     path('ticket-delete/<str:pk>/', views.ticketDelete, name="ticket-delete"),
     # Comments CRUD 
-    path('comment-list/', views.commentList, name='comment-list'),
+    path('comment-list-all/', views.commentListAll, name='comment-list-all'),
+    path('comment-list/<str:fk>', views.commentList, name='comment-list'),
     path('comment-create/', views.commentCreate, name="comment-create"),
     path('comment-read/<str:pk>/', views.commentRead, name='comment-read'),
     path('comment-update/<str:pk>/', views.commentUpdate, name="comment-update"),

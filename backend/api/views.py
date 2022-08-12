@@ -2,6 +2,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from .serializers import TicketSerializer, ProjectSerializer, CommentSerializer
 from django.views.decorators.csrf import csrf_exempt
@@ -74,9 +75,21 @@ def ticketDelete(request, pk):
     
     return Response("Deleted Successfully")
 
+# GET Tickets by foreign key "projectID"
+# New ticket list will be similar to this
+@api_view(['GET'])
+def ticketListByProjectID(request, fk):
+    project = Project.objects.get(id=fk)
+    tickets = project.projectID.all()
+    serializer = TicketSerializer(tickets, many=True)
+    return Response(serializer.data)
+    
+
 """
 PROJECT VIEW
 """
+
+    
 # Projects list will be displayed on teh dashboard page 
 @api_view(['GET'])
 def projectList(request):
@@ -126,8 +139,20 @@ COMMENT VIEW
 """
 
 @api_view(['GET'])
-def commentList(request):
+def commentListAll(request):
     comments = Comment.objects.all()
+    serializer = CommentSerializer(comments, many=True)
+    return Response(serializer.data)
+
+# GET Comment by foreign key "ticketID"
+# New ticket list will be similar to this
+@api_view(['GET'])
+def commentList(request, fk):
+    ticket = Ticket.objects.get(id=fk)
+    print(ticket)
+    comments = ticket.ticketID.all()
+    print(comments)
+    print()
     serializer = CommentSerializer(comments, many=True)
     return Response(serializer.data)
 

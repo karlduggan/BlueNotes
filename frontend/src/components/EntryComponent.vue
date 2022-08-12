@@ -1,5 +1,5 @@
 <template>
-    <div class="entry-container">
+    <div class="entry-container"  >
 
         <div class="entry-wrapper">
 
@@ -99,9 +99,7 @@ export default {
         },
         getID: function(){
             console.log(this.id)
-            setTimeout(() => {
-                console.log("Testing ....")
-            }, 3000);
+            
         }
     }
 
@@ -171,6 +169,7 @@ position: relative;
     margin: 13px;
     position: relative;
     float: right;
+    z-index: 10;
     
 }
 .entry-container {
@@ -181,6 +180,12 @@ position: relative;
  margin: 25px;
  background-color: $background-color-2;
  border: 1px solid $border-color-1;
+ transition: border-color 500ms ease;
+}
+.entry-container:hover{
+border-color: $border-color-hover;
+cursor: pointer;
+ 
 }
 .entry-wrapper {
     padding-left: 25px;
