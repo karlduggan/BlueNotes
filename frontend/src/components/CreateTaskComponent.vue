@@ -87,7 +87,9 @@ export default {
                 "timestamp": this.timeStamp(),
                 "priority": this.priority,
                 "dateToComplete": this.getDateToComplet(),
-                "createdBy": this.$store.state.username
+                "createdBy": this.$store.state.username,
+                // Hard coded for now while building
+                "projectID": "2"
             };
             console.log(data)
             
@@ -95,7 +97,7 @@ export default {
            this.$store.state.taskList.push(data);
            
             // Send to django
-            const url = "http://127.0.0.1:8000/api/task-create/"
+            const url = "http://127.0.0.1:8000/api/ticket-create/"
             fetch(url, {
                 method: 'POST',
                 credentials: 'same-origin',
@@ -155,15 +157,12 @@ export default {
     display: block;
     width: 100%;
 }
-
 .container {
- 
- 
+
 }
 .inside-container {
     width: 100%;
     padding: 10px;
-
     position: relative;
     box-sizing: border-box;
 }
@@ -175,7 +174,6 @@ input {
     background-color: $background-color;
     color: #fff;
     border-radius: 4px;
-   
     outline: none;
     position: relative;
     box-sizing: border-box;

@@ -34,7 +34,7 @@ data() {
 },  
 methods: {
            fetchData: async function(){
-            const url = "http://127.0.0.1:8000/api/task-list/";
+            const url = "http://127.0.0.1:8000/api/ticket-list/";
             const options =  {
             method: 'GET',
             credentials: 'same-origin',

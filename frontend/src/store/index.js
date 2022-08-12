@@ -7,9 +7,12 @@ export default createStore({
         isAuthenticated: false,
         // Store api request results in the task list
         name: "Testing Vue State Management in store/index.js",
+        projectList: [],
         taskList: [],
+        commentList:[],
         // Store the username
-        username: ""
+        username: "",
+        showComments: true
     },
     mutations: { // Synchronous
         // Authentication
