@@ -38,6 +38,9 @@
                         </div>
                         <div class="content-container">
                             <p>{{content}}</p>
+                            <!--Testing Comment Button-->
+                            <button @click="openComments">Comment</button>
+                            
                         </div>
                     </div>
                 </transition>
@@ -79,11 +82,9 @@ export default {
     components: {
     DynamicStatusButtom
 },
-    
+
     methods: {
         deleteEntry: function(){
-         
-
             const url = "http://127.0.0.1:8000/api/task-delete/" + this.id;
             const options =  {
             method: 'DELETE',
@@ -97,13 +98,49 @@ export default {
             .then(data =>  console.log(data))
             .catch( error => console.log(error.message))
         },
-        getID: function(){
-            console.log(this.id)
-            
-        }
-    }
+        test:function(){
+            console.log("comment test click")
+        },
+        getCommentsFromTicketID: async function(ticketID){
+            const url = "http://127.0.0.1:8000/api/comment-list/" + ticketID;
+            const options = {
+                method: "GET",
+                credentials: "same-origin",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Token " + this.$store.state.token
+                }
+            };
+            let response = await fetch(url, options);
+            let data = await response.json();
+            console.log(data)
+            this.$store.state.commentList = data;
+        },
 
+        openComments:function(){
+            console.log("comment btn test")
+            // Check if showComments is True
+            if (this.$store.state.showComments){
+                // Set id to selectedTicketID
+                this.$store.state.selectedTicketID = this.id;
+                // Fetch api comment call
+                this.getCommentsFromTicketID(this.id)
+            }
+            else{
+                // Set showComment to True so to open comment section
+                this.$store.state.showComments = true;
+                // Set id to selectedTicketID
+                this.$store.state.selectedTicketID = this.id;
+                 // Fetch api comment call
+                this.getCommentsFromTicketID(this.id)
+            }
+        }
+    }    
 }
+    
+    
+
+
 </script>
 
 <style lang="scss" scoped >
@@ -169,7 +206,7 @@ position: relative;
     margin: 13px;
     position: relative;
     float: right;
-    z-index: 10;
+  
     
 }
 .entry-container {

@@ -12,7 +12,9 @@ export default createStore({
         commentList:[],
         // Store the username
         username: "",
-        showComments: true
+        showComments: false,
+        // Tracking current ticket selected 
+        selectedTicketID: null
     },
     mutations: { // Synchronous
         // Authentication

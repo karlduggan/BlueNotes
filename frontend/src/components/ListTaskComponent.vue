@@ -31,7 +31,8 @@ export default {
     },
     computed: {
         taskListData(){
-            return this.$store.state.taskList;
+            // Reverse the list so that newest ticket is displayed
+            return this.$store.state.taskList.slice().reverse();
         }
     },
 

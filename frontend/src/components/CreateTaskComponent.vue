@@ -52,7 +52,6 @@ export default {
             title: "",
             content: "",
             priority: "",
-
         }
     },
     computered: {

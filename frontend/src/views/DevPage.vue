@@ -1,5 +1,6 @@
 <template >
   <div class="app-container" v-if="this.$store.state.isAuthenticated">
+  <DraggableComponent></DraggableComponent>
     <div class="wrapper">
         <div class="left">
         <CreateTaskComponent/>
@@ -11,7 +12,8 @@
         </div>
         <transition name="fade">
             <div v-if="this.$store.state.showComments" class="right">
-                <h1>comments</h1>
+                <CreateCommentComponent/>
+             
                 <button @click="hideComments">Hide</button>
                 <CommentListComponent/>
             </div>
@@ -28,13 +30,17 @@ import axios from 'axios';
 import CreateTaskComponent from '@/components/CreateTaskComponent.vue';
 import ListTaskComponent from '@/components/ListTaskComponent.vue';
 import CommentListComponent from '@/components/CommentListComponent.vue';
+import CreateCommentComponent from '@/components/CreateCommentComponent.vue';
+import DraggableComponent from '@/components/DraggableComponent.vue';
 
 export default {
   name: 'DevPage',
   components: {
     CreateTaskComponent,
     ListTaskComponent,
-    CommentListComponent
+    CommentListComponent,
+    CreateCommentComponent,
+    DraggableComponent
 },
 setup(){
     const showDrop = ref(true);
@@ -119,6 +125,7 @@ position: relative;
 min-width: 400px;
 border-left: solid 1px $border-color-1;
 background-color: $background-color-3;
+padding: 15px;
 }
 
 </style>

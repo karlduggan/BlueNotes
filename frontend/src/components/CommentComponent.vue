@@ -3,7 +3,8 @@
         <div class="container">
             <div class="comment-wrapper">
                 <div class="header">
-                    <span><p>{{commentBy}}</p><p>{{commentDate}}</p></span>
+                    <p>Comment by: <b>{{commentBy}}</b></p>
+                    <span class="header-date-created"><p>{{commentDate}}</p></span>
     
                 </div>
                 <div class="body">
@@ -27,13 +28,29 @@ p {
     color:$white;
 }
 .container{
+background-color: $background-color;
+width: 100%;
+margin-bottom: 15px;
+border: solid 1px $border-color-2;
+border-radius: 4px;
 
 }
 .comment-wrapper{
-
+padding: 10px;
 }
 .header{
+border-bottom: solid 1px $border-color-2;
+padding: 5px;
 
+
+}
+.header p{
+display: inline;
+color: $p-text;
+font-size: 14px;
+}
+.header-date-created {
+    float: right;
 }
 .body{
 

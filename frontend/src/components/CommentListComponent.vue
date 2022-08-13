@@ -1,6 +1,6 @@
 <template>
 <div class="list-wrapper">
-    <button @click="fetchData">Test Fetch</button>
+    
             <div>
                 <div class="table-row" v-for="(comment, index) in commentListData" :key="index.id">
                     <!---Put data format here for comment-->
@@ -19,25 +19,12 @@ export default {
     name: "CommentListComponent",
     computed: {
         commentListData() {
-            return this.$store.state.commentList;
+            // Reverse the list so that newest comment is displayed
+            return this.$store.state.commentList.slice().reverse();
         }
     },
     methods: {
-        fetchData: async function () {
-            const url = "http://127.0.0.1:8000/api/comment-list-all/";
-            const options = {
-                method: "GET",
-                credentials: "same-origin",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": "Token " + this.$store.state.token
-                }
-            };
-            let response = await fetch(url, options);
-            let data = await response.json();
-            console.log(data)
-            this.$store.state.commentList = data;
-        },
+       
     },
     components: { CommentComponent }
 }
