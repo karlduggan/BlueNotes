@@ -1,6 +1,5 @@
 <template >
   <div class="app-container" v-if="this.$store.state.isAuthenticated">
-  <DraggableComponent></DraggableComponent>
     <div class="wrapper">
         <div class="left">
         <CreateTaskComponent/>
@@ -10,12 +9,16 @@
     
         <!--<p>{{ $store.state.taskList }}</p>-->
         </div>
+
         <transition name="fade">
             <div v-if="this.$store.state.showComments" class="right">
-                <CreateCommentComponent/>
+                <div class="right-wrapper">
+                    <CreateCommentComponent/>
              
-                <button @click="hideComments">Hide</button>
-                <CommentListComponent/>
+                    <!--button @click="hideComments">Hide</button-->
+                    <CommentListComponent/>
+                </div>
+                
             </div>
         </transition>
         
@@ -31,7 +34,7 @@ import CreateTaskComponent from '@/components/CreateTaskComponent.vue';
 import ListTaskComponent from '@/components/ListTaskComponent.vue';
 import CommentListComponent from '@/components/CommentListComponent.vue';
 import CreateCommentComponent from '@/components/CreateCommentComponent.vue';
-import DraggableComponent from '@/components/DraggableComponent.vue';
+
 
 export default {
   name: 'DevPage',
@@ -40,7 +43,7 @@ export default {
     ListTaskComponent,
     CommentListComponent,
     CreateCommentComponent,
-    DraggableComponent
+  
 },
 setup(){
     const showDrop = ref(true);
@@ -103,17 +106,16 @@ h3 {
    display: flex;
    justify-content: center;
    background-color: $background-color-3;
-   min-height: 90vh;
+   height: 100%;
    
 }
 .wrapper {
     display: flex;
-    
 }
 .left {
   padding: 15px;
   background-color: $background-color-3;
-  min-width: 400px;
+  min-width: 300px;
 }
 .middle {
 position: relative;
@@ -122,10 +124,13 @@ background-color: $background-color;
 }
 .right {
 position: relative;
-min-width: 400px;
+min-width: 300px;
 border-left: solid 1px $border-color-1;
 background-color: $background-color-3;
 padding: 15px;
+}
+.right-wrapper{
+    padding: 10px;
 }
 
 </style>

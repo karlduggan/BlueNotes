@@ -5,6 +5,7 @@
                 <div class="table-row" v-for="(comment, index) in commentListData" :key="index.id">
                     <!---Put data format here for comment-->
                     <CommentComponent
+                    :id="commentListData[index].id"
                     :commentText="commentListData[index].comment"
                     :commentBy="commentListData[index].createdBy" 
                     :commentDate="'date needed'"></CommentComponent>
@@ -31,5 +32,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.list-wrapper {
+    height: 100%;  
+    padding: 20px;
+    margin-top: 15px;   
+    overflow-y: hidden; 
+    
+}
+.list-wrapper:hover {
+    overflow: auto;
+    overflow: overlay;
+}
+.list-wrapper::-webkit-scrollbar {
+    background-color: $background-color-2;
+    position: absolute;
+    width: 10px
+}
+.list-wrapper::-webkit-scrollbar-thumb {
+  background-color: $background-color-4;
+  
+  border-radius: 25px;
+}
 
 </style>

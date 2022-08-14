@@ -28,10 +28,12 @@ export default {
 
 <style lang="scss" scoped>
 body {
-    background-color: $background-color;
-    min-height: 90vh;
+    background-color: $background-color;    
     display: flex;
    justify-content: center;
+   // Off set the header with calc 
+   min-height: calc(100vh - 68px);
+
 }
 .container {
     position: absolute;

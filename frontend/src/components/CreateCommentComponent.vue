@@ -33,13 +33,27 @@ export default {
                 headers: {'Authorization': 'Token ' + this.$store.state.token}
             })
             // Append to the commentList in the state to update the frontend
-            this.$store.state.commentList.push(data);
+            //this.$store.state.commentList.push(data);
             // Clear textarea filed 
             this.commentField = ""
-
-        }
+            // Update comment list by request when submiting a create comment post **TEMP FIX**
+            this.updateCommentsByTicketID(this.$store.state.selectedTicketID)
+        },
+        updateCommentsByTicketID: async function(ticketID){
+            const url = "http://127.0.0.1:8000/api/comment-list/" + ticketID;
+            const options = {
+                method: "GET",
+                credentials: "same-origin",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Token " + this.$store.state.token
+                }
+            };
+            let response = await fetch(url, options);
+            let data = await response.json();
+            this.$store.state.commentList = data;
     }
-}
+    }}
 </script>
 
 <style lang="scss" scoped>
@@ -61,7 +75,7 @@ textarea{
     color: #fff;
     border-radius: 4px;
     outline: none;
-    height: 80px;
+    height: 200px;
     resize: none;
     transition: border-color 500ms ease;
 }

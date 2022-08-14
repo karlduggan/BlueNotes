@@ -1,7 +1,6 @@
 <template>
   <div ref="draggableContainer" id="draggable-container">
     <div id="draggable-header" @mousedown="dragMouseDown">
-    <h1>TestDrag</h1>
       <slot name="header"></slot>
     </div>
     <slot name="main"></slot>
@@ -49,13 +48,11 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 #draggable-container {
   position: absolute;
+  top: 20%;
   z-index: 9;
-  height: 400px;
-  width: 400px;
-  background-color: #fff;
 }
 #draggable-header {
   z-index: 10;

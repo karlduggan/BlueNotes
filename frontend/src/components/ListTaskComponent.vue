@@ -34,17 +34,15 @@ export default {
             // Reverse the list so that newest ticket is displayed
             return this.$store.state.taskList.slice().reverse();
         }
-    },
-
-   
+    },   
 }
 </script>
 
 
-<style lang="scss" scoped >
+<style lang="scss" scoped > 
 .list-wrapper {
-    height: 800px;
-    width: 850px;
+    height: 100%;
+    min-width: 700px;
     overflow-y: hidden;
     background-color: $background-color;
 

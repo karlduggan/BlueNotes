@@ -4,11 +4,23 @@
         <div class="left">
         <CreateTaskComponent/>
         </div>
-        <div class="right">
+        <div class="middle">
         <ListTaskComponent/>
     
         <!--<p>{{ $store.state.taskList }}</p>-->
         </div>
+
+        <transition name="fade">
+            <div v-if="this.$store.state.showComments" class="right">
+                <div class="right-wrapper">
+                    <CreateCommentComponent/>
+             
+                    <!--button @click="hideComments">Hide</button-->
+                    <CommentListComponent/>
+                </div>
+                
+            </div>
+        </transition>
         
     </div>
    
@@ -16,21 +28,34 @@
 </template>
 
 <script>
-
+import { ref } from 'vue';
 import axios from 'axios';
 import CreateTaskComponent from '@/components/CreateTaskComponent.vue';
 import ListTaskComponent from '@/components/ListTaskComponent.vue';
+import CommentListComponent from '@/components/CommentListComponent.vue';
+import CreateCommentComponent from '@/components/CreateCommentComponent.vue';
+
 
 export default {
   name: 'ToDoList',
   components: {
     CreateTaskComponent,
-    ListTaskComponent
+    ListTaskComponent,
+    CommentListComponent,
+    CreateCommentComponent,
+  
+},
+setup(){
+    const showDrop = ref(true);
+        return {
+            showDrop
+        }
 },
 data() {
   return {
 
   }
+ 
 },  
 methods: {
            fetchData: async function(){
@@ -46,6 +71,9 @@ methods: {
             let data = await response.json()
             this.$store.state.taskList = data;
           
+        },
+        hideComments: function(){
+            this.$store.state.showComments = false;
         }
 },
 beforeCreate() {
@@ -78,7 +106,8 @@ h3 {
    display: flex;
    justify-content: center;
    background-color: $background-color-3;
-   min-height: 90vh;
+   // Off set the header with calc 
+   min-height: calc(100vh - 68px);
    
 }
 .wrapper {
@@ -87,13 +116,22 @@ h3 {
 .left {
   padding: 15px;
   background-color: $background-color-3;
+  min-width: 300px;
+}
+.middle {
+position: relative;
+border-left: solid 1px $border-color-1;
+background-color: $background-color;
 }
 .right {
 position: relative;
-right: 0;
+min-width: 300px;
 border-left: solid 1px $border-color-1;
-background-color: $background-color;
-
+background-color: $background-color-3;
+padding: 15px;
+}
+.right-wrapper{
+    padding: 10px;
 }
 
 </style>

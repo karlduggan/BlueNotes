@@ -47,7 +47,7 @@
                 <!-- Dropdown Container ENDS -->
             </div>    
                 
-                <!--button id="removeButton" @click="deleteEntry()">Remove</button-->
+                <button id="removeButton" @click="deleteEntry()">Remove</button>
                 <!--button @click="getID()">Get ID</button-->
     </div>
 </template>
