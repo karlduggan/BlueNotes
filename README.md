@@ -54,3 +54,24 @@ use for authorization to access certain areas on the website
 
 ### Generate Color Palette 
 https://mycolor.space/
+
+
+# Get Started
+
+1. npm install
+
+2. python -m venv env
+
+3. source env/bin/activate
+
+4. pip install -r requirements.txt
+
+5. cd backend
+
+6. python manage.py makemigration
+
+7. python manage.py migrate
+
+8. python manage.py runserver
+
+9. cd frontend npm run serve
