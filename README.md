@@ -56,7 +56,7 @@ use for authorization to access certain areas on the website
 https://mycolor.space/
 
 
-# Get Started
+# Getting Started
 
 1. npm install
 
