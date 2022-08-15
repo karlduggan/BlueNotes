@@ -74,13 +74,14 @@ export default {
 <style lang="scss" scoped>
 .button {
     font-family: sans-serif;
+    font-size: 12px;
     border: none;
-    width: 100px;;
+    width: 75px;;
     padding: 5px;
     cursor: pointer;
     text-align: center;
     align-content: center;
-    border-radius: 25px;
+    border-radius: 4px;
     color: $white;
     font-weight: 500;
 }

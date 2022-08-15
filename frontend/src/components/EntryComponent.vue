@@ -7,12 +7,7 @@
                 <div class="header-row">
                     <div id="title"><p>{{title}}</p></div>
 
-                    <!-- View Details BTN STARTS -->
-                    <div class="view-details" @click="showDrop = !showDrop">
-                        <p>View Details</p>
-
-                    </div>
-                    <!-- View Details BTN ENDS -->
+                   
 
                     <!-- Priority STARTS -->
                     <div class="priority">
@@ -40,15 +35,19 @@
                             <p>{{content}}</p>
                             <!--Testing Comment Button-->
                             <button @click="openComments">Comment</button>
-                            
+                            <button id="removeButton" @click="deleteEntry()">Remove</button>
                         </div>
                     </div>
                 </transition>
                 <!-- Dropdown Container ENDS -->
+                
             </div>    
                 
-                <button id="removeButton" @click="deleteEntry()">Remove</button>
+                
                 <!--button @click="getID()">Get ID</button-->
+                <div class="footer" @click="detailDropdown()">
+                    <p>{{dropdownText}}</p>
+                </div>
     </div>
 </template>
 
@@ -65,7 +64,8 @@ export default {
     },
     data(){
         return {
-            newStatus: ""
+            newStatus: "",
+            dropdownText: "View Details"
         }
     },
     name: "EntryComponent",
@@ -84,6 +84,14 @@ export default {
 },
 
     methods: {
+        detailDropdown: function(){
+            this.showDrop = !this.showDrop
+            if(this.showDrop){
+                this.dropdownText = "Hide Details"
+            } else {
+                this.dropdownText = "View Details"
+            }
+        },
         deleteEntry: function(){
             const url = "http://127.0.0.1:8000/api/task-delete/" + this.id;
             const options =  {
@@ -184,15 +192,7 @@ position: relative;
     transition: all 200ms ease-in-out;
     cursor: pointer;
 }
-.view-details p {
-    margin: 0;
-    padding: 5px;
-}
-.view-details:hover {
-    color: #fff;
-    background-color: $blue;
-    transition: all 200ms ease-in-out;
-}
+
 
 .priority {
     display:inline-block;
@@ -210,7 +210,7 @@ position: relative;
     
 }
 .entry-container {
- padding: 5px;
+ 
  box-shadow: 1px 5px 20px rgba(0, 0, 0, 0.5)  ; 
 -webkit-box-shadow: 1px 5px 20px rgba(0, 0, 0, 0.5)  ; 
 -moz-box-shadow: 1px 5px 20px rgba(0, 0, 0, 0.5)  ; 
@@ -219,11 +219,7 @@ position: relative;
  border: 1px solid $border-color-1;
  transition: border-color 500ms ease;
 }
-.entry-container:hover{
-border-color: $border-color-hover;
-cursor: pointer;
- 
-}
+
 .entry-wrapper {
     padding-left: 25px;
     padding-right: 25px;
@@ -247,6 +243,23 @@ cursor: pointer;
     text-align: center;
     align-content: center;
     margin-top: 10px;
+}
+.footer {
+    text-align: center;
+    background-color: $border-color-1;
+    font-size: 11px;
+    color: $white;
+    transition: all 500ms ease;
+    margin-top: 15px;
+}
+.footer p{
+    margin: 0;
+    font-weight: 500;
+}
+.footer:hover {
+    background-color: $border-color;
+    color: $border-color-1;
+    cursor: pointer;
 }
 
 
