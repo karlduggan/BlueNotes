@@ -52,6 +52,7 @@ export default {
                 localStorage.setItem("token", token);
                 // Push to App
                 this.$router.push("/todo-list");
+                
                 // Set the username for welcome feature
                 this.$store.state.username = this.username
                 localStorage.setItem('username', this.username)

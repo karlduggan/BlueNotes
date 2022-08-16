@@ -88,7 +88,7 @@ export default {
                 "dateToComplete": this.getDateToComplet(),
                 "createdBy": this.$store.state.username,
                 // Hard coded for now while building
-                "projectID": "2"
+                "projectID": "1"
             };
             console.log(data)
             

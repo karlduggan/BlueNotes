@@ -34,8 +34,18 @@
                         <div class="content-container">
                             <p>{{content}}</p>
                             <!--Testing Comment Button-->
-                            <button @click="openComments">Comment</button>
-                            <button id="removeButton" @click="deleteEntry()">Remove</button>
+
+                            <div class="button-container">
+                                <div class="button" @click="openComments">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M7 7h10v2H7zm0 4h7v2H7z"  fill="white"/><path d="M20 2H4c-1.103 0-2 .897-2 2v18l5.333-4H20c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2zm0 14H6.667L4 18V4h16v12z" fill="white" /></svg>
+                                </div>
+                                <div class="button" @click="deleteEntry()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z" fill="white" /><path d="M9 10h2v8H9zm4 0h2v8h-2z" fill="white"/></svg>
+                                </div>
+                            </div>
+                           
+                            
+                            
                         </div>
                     </div>
                 </transition>
@@ -234,16 +244,7 @@ position: relative;
     border-bottom: solid 1px $border-color-2;
 
 }
-#removeButton {
-    font-family: sans-serif;
-    border: none;
-    width: 100px;;
-    padding: 5px;
-    cursor: pointer;
-    text-align: center;
-    align-content: center;
-    margin-top: 10px;
-}
+
 .footer {
     text-align: center;
     background-color: $border-color-1;
@@ -260,6 +261,15 @@ position: relative;
     background-color: $border-color;
     color: $border-color-1;
     cursor: pointer;
+}
+.button {
+    cursor: pointer;
+    margin-right: 20px;
+    
+}
+.button-container {
+    display: flex;
+    flex-wrap: nowrap;
 }
 
 
