@@ -14,7 +14,9 @@ export default createStore({
         username: "",
         showComments: false,
         // Tracking current ticket selected 
-        selectedTicketID: null
+        selectedTicketID: null,
+        // Show Add Ticket Modal
+        showAddTicketModal: false
     },
     mutations: { // Synchronous
         // Authentication

@@ -1,5 +1,5 @@
 <template>
-<div>
+<div v-if="this.$store.state.isAuthenticated">
     <h1>Dashboard Temp</h1>
 </div>
     
@@ -7,7 +7,7 @@
 <script>
 import axios from 'axios'
 export default{
-    name: 'Dashboard',
+    name: 'DashboardPage',
     data(){
         return {
 

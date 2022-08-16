@@ -1,6 +1,7 @@
 <template>
   <div ref="draggableContainer" id="draggable-container">
     <div id="draggable-header" @mousedown="dragMouseDown">
+    <button @click="close">X</button>
     </div>
     <body>
         <CreateTaskComponent></CreateTaskComponent>
@@ -21,11 +22,15 @@ export default {
                 clientX: undefined,
                 clientY: undefined,
                 movementX: 0,
-                movementY: 0
+                movementY: 0,
+                showAddTicketModal: this.$store.state.showAddTicketModal
             }
         };
     },
     methods: {
+        close: function(){
+            this.$store.state.showAddTicketModal = false;
+        },
         dragMouseDown: function (event) {
             event.preventDefault();
             // get the mouse cursor position at startup:
@@ -75,5 +80,14 @@ body {
   height: 20px;
   background-color: $border-color-2;
   position: relative;
+}
+#draggable-header button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    float: right;
+    padding: 4px;
+    position: relative;
+    right: 5px;
 }
 </style>

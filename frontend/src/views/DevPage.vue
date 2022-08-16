@@ -1,13 +1,17 @@
 <template >
+
   <div class="app-container" v-if="this.$store.state.isAuthenticated">
-  <CreateTicket v-show="createTicketIsShow"></CreateTicket>
+  
+  <CreateTicket v-show="this.$store.state.showAddTicketModal"></CreateTicket>
     <div class="wrapper">
         
-        <div class="left">
-        <CreateTaskComponent/>
-        </div>
+        
         <div class="middle">
-        <ListTaskComponent/>
+         
+          <div class="btn-wrapper">
+               <button class="add-ticket-btn" @click="showCreateTicket">Add Ticket</button>
+          </div>
+          <ListTaskComponent/>
     
         <!--<p>{{ $store.state.taskList }}</p>-->
         </div>
@@ -33,7 +37,6 @@
 <script>
 import { ref } from 'vue';
 import axios from 'axios';
-import CreateTaskComponent from '@/components/CreateTaskComponent.vue';
 import ListTaskComponent from '@/components/ListTaskComponent.vue';
 import CommentListComponent from '@/components/CommentListComponent.vue';
 import CreateCommentComponent from '@/components/CreateCommentComponent.vue';
@@ -44,7 +47,7 @@ import CreateTicket from '@/components/CreateTicket.vue';
 export default {
   name: 'DevPage',
   components: {
-    CreateTaskComponent,
+   
     ListTaskComponent,
     CommentListComponent,
     CreateCommentComponent,
@@ -60,11 +63,14 @@ setup(){
 },
 data() {
   return {
-
+     
   }
  
 },  
 methods: {
+  showCreateTicket: function(){
+    this.$store.state.showAddTicketModal = true;
+  },
            fetchData: async function(){
             const url = "http://127.0.0.1:8000/api/ticket-list/";
             const options =  {
@@ -138,6 +144,28 @@ padding: 15px;
 }
 .right-wrapper{
     padding: 10px;
+}
+.btn-wrapper{
+  padding: 25px;
+  border-bottom: 4px solid $border-color-2;
+  
+}
+.add-ticket-btn{
+    width: 150px;
+    padding: 15px;
+   
+    border: solid $green 1px;
+    border-radius: 5px;
+    background-color: $background-color-2;
+    font-weight: 800;
+    color: $green;
+    cursor: pointer;
+    transition: all 300ms ease;
+}
+.add-ticket-btn:hover {
+ 
+  background-color: $green;
+  color: $white;
 }
 
 </style>

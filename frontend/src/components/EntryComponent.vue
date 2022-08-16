@@ -14,7 +14,6 @@
                         <p>{{priority}}</p>
                     </div>
                     <!-- Priority ENDS -->
-
                 
                     <div class="status-container">
                         <DynamicStatusButtom :entryId="id" :status="status"/>
@@ -242,7 +241,10 @@ position: relative;
     font-size: 11px;
     color: $dark-grey;
     border-bottom: solid 1px $border-color-2;
-
+    display: flex;
+}
+.time-stamp p{
+    margin-right: 20px;
 }
 
 .footer {
@@ -251,7 +253,7 @@ position: relative;
     font-size: 11px;
     color: $white;
     transition: all 500ms ease;
-    margin-top: 15px;
+ 
 }
 .footer p{
     margin: 0;
@@ -270,6 +272,7 @@ position: relative;
 .button-container {
     display: flex;
     flex-wrap: nowrap;
+    margin-bottom: 15px;
 }
 
 

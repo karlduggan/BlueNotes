@@ -52,6 +52,7 @@ export default {
             title: "",
             content: "",
             priority: "",
+          
         }
     },
     computered: {
@@ -117,6 +118,10 @@ export default {
             // Clear text input fields
             this.title = "";
             this.content = "";
+            // Close the ticket modal via state
+            this.$store.state.showAddTicketModal = false;
+           
+           
         },
 
         timeStamp: function(){

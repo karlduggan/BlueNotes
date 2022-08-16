@@ -5,6 +5,7 @@ import ToDoList from '@/views/ToDoList';
 import DevPage from '@/views/DevPage';
 import LogIn from '@/views/LogIn'
 import SignUp from '@/views/SignUp'
+import DashboardPage from '@/views/DashboardPage'
 
 const routes = [
     {
@@ -31,6 +32,11 @@ const routes = [
         path: '/dev', 
         name: 'DevPage', 
         component: DevPage
+    },
+    {
+        path: '/dashboard', 
+        name: 'DashboardPage', 
+        component: DashboardPage
     }
 ]
 
