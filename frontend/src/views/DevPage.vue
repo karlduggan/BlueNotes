@@ -10,6 +10,13 @@
          
           <div class="btn-wrapper">
                <button class="add-ticket-btn" @click="showCreateTicket">Add Ticket</button>
+               <div class="stats">
+                 
+                  <p>High: Null</p>
+                  <p>Medium: Null</p>
+                  <p>Low: Null </p>
+               </div>
+               
           </div>
           <ListTaskComponent/>
     
@@ -148,6 +155,7 @@ padding: 15px;
 .btn-wrapper{
   padding: 25px;
   border-bottom: 4px solid $border-color-2;
+  display: flex;
   
 }
 .add-ticket-btn{
@@ -167,5 +175,10 @@ padding: 15px;
   background-color: $green;
   color: $white;
 }
-
+.stats{
+  margin-left: 25px;
+}
+.stats p{
+  margin: 0px;
+}
 </style>
