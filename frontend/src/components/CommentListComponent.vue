@@ -34,7 +34,7 @@ export default {
 <style lang="scss" scoped>
 .list-wrapper {
     height: 100%;  
-    padding: 20px;
+  
     margin-top: 15px;   
     overflow-y: hidden; 
     

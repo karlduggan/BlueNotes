@@ -1,6 +1,8 @@
 <template >
   <div class="app-container" v-if="this.$store.state.isAuthenticated">
+  <CreateTicket v-show="createTicketIsShow"></CreateTicket>
     <div class="wrapper">
+        
         <div class="left">
         <CreateTaskComponent/>
         </div>
@@ -20,6 +22,7 @@
                 </div>
                 
             </div>
+            
         </transition>
         
     </div>
@@ -34,6 +37,8 @@ import CreateTaskComponent from '@/components/CreateTaskComponent.vue';
 import ListTaskComponent from '@/components/ListTaskComponent.vue';
 import CommentListComponent from '@/components/CommentListComponent.vue';
 import CreateCommentComponent from '@/components/CreateCommentComponent.vue';
+import CreateTicket from '@/components/CreateTicket.vue';
+
 
 
 export default {
@@ -43,12 +48,14 @@ export default {
     ListTaskComponent,
     CommentListComponent,
     CreateCommentComponent,
-  
+    CreateTicket
 },
 setup(){
     const showDrop = ref(true);
+    const createTicketIsShow = ref(true);
         return {
-            showDrop
+            showDrop,
+            createTicketIsShow
         }
 },
 data() {
