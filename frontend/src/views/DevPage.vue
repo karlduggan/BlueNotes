@@ -8,6 +8,10 @@
         
         <div class="middle-wrapper">
             <div class="btn-wrapper">
+              <div class="items-inline">
+                <h1>Project Name </h1>
+              </div>
+              
                <button id="add-ticket-btn" class="items-inline" @click="showCreateTicket">Add Ticket</button>
                 <button id="assigned-btn" class="items-inline">Assigned</button>
                 <button id="export-btn" class="items-inline">Export</button>
@@ -239,6 +243,7 @@ padding: 15px;
     transition: all 300ms ease;
     outline: none;
     justify-content: flex-end;
+    -webkit-appearance:none;
 }
 #sort-select:hover {
     background-color: $orange;
@@ -249,5 +254,14 @@ padding: 15px;
 }
 .items-inline {
     margin-right: 20px;
+   
+}
+.items-inline h1 {
+  padding: 0;
+  margin: 0;
+  color: $border-color-2;
+  font-size: 25px;
+  position: relative;
+  top: 5px;
 }
 </style>
