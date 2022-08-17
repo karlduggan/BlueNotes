@@ -6,19 +6,16 @@
     <div class="wrapper">
         
         
-        <div class="middle">
-         
-          <div class="btn-wrapper">
+        <div class="middle-wrapper">
+            <div class="btn-wrapper">
                <button class="add-ticket-btn" @click="showCreateTicket">Add Ticket</button>
-               <div class="stats">
-                 
-                  <p>High: Null</p>
-                  <p>Medium: Null</p>
-                  <p>Low: Null </p>
-               </div>
-               
-          </div>
-          <ListTaskComponent/>
+              
+            </div>
+            <div class="middle">
+              <ListTaskComponent/>
+            </div>
+         
+        
     
         <!--<p>{{ $store.state.taskList }}</p>-->
         </div>
@@ -140,12 +137,13 @@ h3 {
 .middle {
 position: relative;
 border-left: solid 1px $border-color-1;
+border-right: solid 1px $border-color-1;
 background-color: $background-color;
 }
 .right {
 position: relative;
 min-width: 300px;
-border-left: solid 1px $border-color-1;
+
 background-color: $background-color-3;
 padding: 15px;
 }
@@ -153,14 +151,14 @@ padding: 15px;
     padding: 10px;
 }
 .btn-wrapper{
-  padding: 25px;
+  padding: 20px 0px 20px 0px;
   border-bottom: 4px solid $border-color-2;
   display: flex;
   
 }
 .add-ticket-btn{
-    width: 150px;
-    padding: 15px;
+    width: 125px;
+    padding: 10px;
    
     border: solid $green 1px;
     border-radius: 5px;
@@ -175,10 +173,5 @@ padding: 15px;
   background-color: $green;
   color: $white;
 }
-.stats{
-  margin-left: 25px;
-}
-.stats p{
-  margin: 0px;
-}
+
 </style>

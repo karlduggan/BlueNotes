@@ -55,7 +55,7 @@ p {
 }
 .container{
 background-color: $background-color;
-width: 300px;
+width: 280px;
 margin-bottom: 15px;
 border: solid 1px $border-color-2;
 border-radius: 4px;
