@@ -30,6 +30,8 @@ export default {
     methods: {
         close: function(){
             this.$store.state.showAddTicketModal = false;
+            // On close set the position back to center
+       
         },
         dragMouseDown: function (event) {
             event.preventDefault();

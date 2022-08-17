@@ -8,8 +8,22 @@
         
         <div class="middle-wrapper">
             <div class="btn-wrapper">
-               <button class="add-ticket-btn" @click="showCreateTicket">Add Ticket</button>
-              
+               <button id="add-ticket-btn" class="items-inline" @click="showCreateTicket">Add Ticket</button>
+                <button id="assigned-btn" class="items-inline">Assigned</button>
+                <button id="export-btn" class="items-inline">Export</button>
+
+                <select name="sortBy" id="sort-select" class="items-inline">
+                    <option value="" disabled selected>Sort By</option>
+                    <option value="Priority">Priority</option>
+                    <option value="CreatedBy">Created By</option>
+                    <option value="DueSoon">Due Soon</option>
+                    <optgroup label="Sort by Status">
+                        <option value="InProgress">In Progress</option>
+                        <option value="To Do">To Do</option>
+                        <option value="Completed">Completed</option>
+                        <option value="OverDue">Over Due</option>
+                    </optgroup>
+                </select>
             </div>
             <div class="middle">
               <ListTaskComponent/>
@@ -154,9 +168,10 @@ padding: 15px;
   padding: 20px 0px 20px 0px;
   border-bottom: 4px solid $border-color-2;
   display: flex;
+
   
 }
-.add-ticket-btn{
+#add-ticket-btn{
     width: 125px;
     padding: 10px;
    
@@ -168,10 +183,71 @@ padding: 15px;
     cursor: pointer;
     transition: all 300ms ease;
 }
-.add-ticket-btn:hover {
+#add-ticket-btn:hover {
  
   background-color: $green;
   color: $white;
 }
 
+#assigned-btn {
+    width: 125px;
+    padding: 10px;
+   
+    border: solid $blue 1px;
+    border-radius: 5px;
+    background-color: $background-color-2;
+    font-weight: 800;
+    color: $blue;
+    cursor: pointer;
+    transition: all 300ms ease;
+}
+#assigned-btn:hover {
+    background-color: $blue;
+    color: $white;
+}
+
+
+
+#export-btn {
+    width: 125px;
+    padding: 10px;
+   
+    border: solid $pink 1px;
+    border-radius: 5px;
+    background-color: $background-color-2;
+    font-weight: 800;
+    color: $pink;
+    cursor: pointer;
+    transition: all 300ms ease;
+}
+#export-btn:hover {
+    background-color: $pink;
+    color: $white;
+}
+
+#sort-select {
+    float: right;
+    width: 125px;
+    padding: 10px;
+    text-align: center;
+    border: solid $orange 1px;
+    border-radius: 5px;
+    background-color: $background-color-2;
+    font-weight: 800;
+    color: $orange;
+    cursor: pointer;
+    transition: all 300ms ease;
+    outline: none;
+    justify-content: flex-end;
+}
+#sort-select:hover {
+    background-color: $orange;
+    color: $white;
+}
+#sort-select:focus {
+    outline: 0;
+}
+.items-inline {
+    margin-right: 20px;
+}
 </style>
