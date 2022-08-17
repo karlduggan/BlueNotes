@@ -17,7 +17,8 @@
             </div>
           </div>
           <div class="inner-right-bottom-container">
-            Project List Section
+            <!--Test Project Component Below-->
+            <ProjectListComponent/>
           </div>
         </div>
       </div>
@@ -29,34 +30,33 @@
 </template>
 <script>
 import axios from 'axios'
+import ProjectListComponent from '@/components/ProjectListComponent.vue'
 export default{
-    name: 'DashboardPage',
-    data(){
-        return {
-
-        }
+    name: "DashboardPage",
+    data() {
+        return {};
     },
     beforeCreate() {
-    this.$store.commit('initializeStore')
-
-    const token = this.$store.state.token
-    if(token){
-    axios.defaults.headers.common['Authorization'] = "Token " + token
-  }  else {
-    axios.defaults.headers.common['Authorization'] = ''
-  }
-},
-created(){
-  // Work around to have a persistent data and to not loose the username when refreshing the page 
-  this.$store.state.username = localStorage.getItem('username')
-},
+        this.$store.commit("initializeStore");
+        const token = this.$store.state.token;
+        if (token) {
+            axios.defaults.headers.common["Authorization"] = "Token " + token;
+        }
+        else {
+            axios.defaults.headers.common["Authorization"] = "";
+        }
+    },
+    created() {
+        // Work around to have a persistent data and to not loose the username when refreshing the page 
+        this.$store.state.username = localStorage.getItem("username");
+    },
+    components: { ProjectListComponent }
 }
 </script>
 <style lang="scss" scoped>
 
- .container{
-
-height: 800px;
+.container{
+background-color: $background-color-2;
 
  }
 .inner-container{
@@ -72,6 +72,7 @@ height: 100%;
 }
 .inner-left-container{
 border-right: 1px solid $border-color-2;
+
 display: flex;
 display: block;
 flex-grow: 1;
@@ -83,7 +84,7 @@ order: 0;
 }
 .inner-right-container{
 
-padding: 10px;
+padding: 5px;
 display: block;
 flex-grow: 6;
 flex-shrink: 0;
@@ -91,31 +92,28 @@ flex-basis: auto;
 align-self: stretch;
 order: 0;
 
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: normal;
-  align-items: stretch;
- align-content: stretch;
+display: flex;
+flex-direction: column;
+flex-wrap: nowrap;
+justify-content: normal;
+align-items: stretch;
+align-content: stretch;
 }
 .inner-right-top-container{
 
-
 height: 300px;
-
- display: flex;
- flex-direction: row;
-  flex-grow: 0;
-  flex-shrink: 0;
-  flex-basis: auto;
-  align-self: stretch;
-  order: 0;
+display: flex;
+flex-direction: row;
+flex-grow: 0;
+flex-shrink: 0;
+flex-basis: auto;
+align-self: stretch;
+order: 0;
 }
 .stat-container-1{
   border: 1px solid $border-color-2;
   margin: 5px;
-  
-    display: block;
+  display: block;
   flex-grow: 2;
   flex-shrink: 0;
   flex-basis: auto;
