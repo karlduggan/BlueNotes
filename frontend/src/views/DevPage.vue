@@ -154,9 +154,13 @@ h3 {
 }
 .middle {
 position: relative;
+/*
 border-left: solid 1px $border-color-1;
 border-right: solid 1px $border-color-1;
+
 background-color: $background-color;
+
+*/
 }
 .right {
 position: relative;
@@ -196,7 +200,6 @@ padding: 15px;
 #assigned-btn {
     width: 125px;
     padding: 10px;
-   
     border: solid $blue 1px;
     border-radius: 5px;
     background-color: $background-color-2;

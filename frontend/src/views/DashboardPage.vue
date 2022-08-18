@@ -57,6 +57,8 @@ export default{
 
 .container{
 background-color: $background-color-2;
+// Off set the header with calc 
+   min-height: calc(100vh - 68px);
 
  }
 .inner-container{
@@ -92,6 +94,8 @@ flex-basis: auto;
 align-self: stretch;
 order: 0;
 
+// Off set the header with calc 
+   min-height: calc(100vh - 68px);
 display: flex;
 flex-direction: column;
 flex-wrap: nowrap;

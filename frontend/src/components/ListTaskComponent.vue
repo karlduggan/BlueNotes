@@ -44,7 +44,7 @@ export default {
     height: 100%;
     min-width: 900px;
     overflow-y: hidden;
-    background-color: $background-color;
+    /*background-color: $background-color;*/
 
 }
 .list-wrapper:hover {

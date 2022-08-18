@@ -1,5 +1,5 @@
 <template>
-<div class="container">
+<div class="container-project-list">
     <ProjectComponent 
     id="1"
     title="Project Name"
@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
+.container-project-list {
     display: flex;
     flex-wrap: wrap;
 }
