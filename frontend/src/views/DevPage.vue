@@ -140,8 +140,9 @@ h3 {
 .app-container {
    display: flex;
    justify-content: center;
-   background-color: $background-color-3;
-   height: 100%;
+   background-color: $background-color;
+   // Off set the header with calc 
+   min-height: calc(100vh - 68px);
    
 }
 .wrapper {
@@ -185,7 +186,7 @@ padding: 15px;
    
     border: solid $green 1px;
     border-radius: 5px;
-    background-color: $background-color-2;
+    background-color: transparent;
     font-weight: 800;
     color: $green;
     cursor: pointer;
@@ -202,7 +203,7 @@ padding: 15px;
     padding: 10px;
     border: solid $blue 1px;
     border-radius: 5px;
-    background-color: $background-color-2;
+    background-color: transparent;
     font-weight: 800;
     color: $blue;
     cursor: pointer;
@@ -221,7 +222,7 @@ padding: 15px;
    
     border: solid $pink 1px;
     border-radius: 5px;
-    background-color: $background-color-2;
+    background-color: transparent;
     font-weight: 800;
     color: $pink;
     cursor: pointer;
@@ -239,7 +240,7 @@ padding: 15px;
     text-align: center;
     border: solid $orange 1px;
     border-radius: 5px;
-    background-color: $background-color-2;
+    background-color: transparent;
     font-weight: 800;
     color: $orange;
     cursor: pointer;
