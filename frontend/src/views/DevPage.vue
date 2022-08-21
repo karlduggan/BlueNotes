@@ -3,16 +3,20 @@
   <div class="app-container" v-if="this.$store.state.isAuthenticated">
   
   <CreateTicket v-show="this.$store.state.showAddTicketModal"></CreateTicket>
+    
     <div class="wrapper">
         
         
         <div class="middle-wrapper">
+          <div class="back-btn">
+                <p>Back</p>
+          </div>
             <div class="btn-wrapper">
               <div class="items-inline">
                 <h1>Project Name </h1>
               </div>
               
-               <button id="add-ticket-btn" class="items-inline" @click="showCreateTicket">Add Ticket</button>
+                <button id="add-ticket-btn" class="items-inline" @click="showCreateTicket">Add Ticket</button>
                 <button id="assigned-btn" class="items-inline">Assigned</button>
                 <button id="export-btn" class="items-inline">Export</button>
 
@@ -28,6 +32,7 @@
                         <option value="OverDue">Over Due</option>
                     </optgroup>
                 </select>
+              
             </div>
             <div class="middle">
               <ListTaskComponent/>
@@ -267,5 +272,14 @@ padding: 15px;
   font-size: 25px;
   position: relative;
   top: 5px;
+}
+.back-btn {
+  color: $border-color-2;
+  cursor: pointer;
+  font-weight: 500;
+  width: fit-content;
+}
+.back-btn p {
+   border-bottom: 1px solid $border-color-2;
 }
 </style>
