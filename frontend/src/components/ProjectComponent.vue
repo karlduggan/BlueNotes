@@ -1,6 +1,6 @@
 <template>
-    <div class="container">
-        <div class="left"></div>
+    <div class="container" @click="redirectToProjectPage">
+        
         <div class="right">
             <header>
                 <h2>{{title}}</h2>
@@ -32,6 +32,17 @@ export default {
         return {
 
         }
+    },
+    methods:{
+        redirectToProjectPage: function(){
+            console.log(this.id)
+            // Assign project selected id to the stored state
+            this.$store.state.selectedProjectID = this.id
+            // store selected project id to the locaStorage
+            localStorage.setItem("projectID", this.id);
+            // Redirect to the ticket list of the selected project
+            this.$router.push("/todo-list");
+        }
     }
 }
 </script>
@@ -39,25 +50,20 @@ export default {
 <style lang="scss" scoped>
 .container {
     display: flex;
-    margin: 15px;
-    width: 230px;
-   
+    margin: 25px;
+    width: 300px;
+    height: 200px;
     border-radius: 4px;
-   
     background-color: $border-color-2;
     cursor: pointer;
-position: relative;
+    box-sizing: content-box;
+    border: solid 1px $green;
     box-shadow: 0px 10px 6px -3px rgba(0,0,0,0.75);
     -webkit-box-shadow: 0px 10px 6px -3px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 10px 6px -3px rgba(0,0,0,0.75);
+    color: $white;
 }
-.left{
-    background-color: #20232B;
-    border-radius: 4px 0px 0px 4px;
-    position: absolute;
-    width: 10px;
-    height: 100%;
-}
+.container 
 .right{
     padding: 15px;
 }

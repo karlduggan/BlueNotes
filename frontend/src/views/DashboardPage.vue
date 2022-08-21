@@ -24,10 +24,8 @@
         </div>
       </div>
       <transition name="fade" >
-            <div v-if="this.$store.state.createProjectDisplay">
-               <div class="create-project-modal-container">
-                <h1>Create Project Modal Container</h1>
-               </div>      
+            <div v-if="this.$store.state.createProjectDisplay" class="overlay">
+               <CreateProject/>
             </div>
             
         </transition>
@@ -40,6 +38,7 @@
 <script>
 import axios from 'axios'
 import ProjectListComponent from '@/components/ProjectListComponent.vue'
+import CreateProject from '@/components/CreateProject.vue';
 export default{
     name: "DashboardPage",
     data() {
@@ -59,7 +58,7 @@ export default{
         // Work around to have a persistent data and to not loose the username when refreshing the page 
         this.$store.state.username = localStorage.getItem("username");
     },
-    components: { ProjectListComponent },
+    components: { ProjectListComponent, CreateProject },
     methods: {
       createProjectToggle: function(){
         this.$store.state.createProjectDisplay = !this.$store.state.createProjectDisplay;
@@ -153,15 +152,18 @@ order: 0;
   order: 0;
 }
 .inner-right-bottom-container{
+  justify-content: center;
   border: 1px solid $border-color-2;
   margin: 5px;
-  
-  display: block;
+  display: flex;
   flex-grow: 1;
   flex-shrink: 0;
   flex-basis: auto;
   align-self: stretch;
   order: 0;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: fit-content;
   
 }
 #create-project {
@@ -199,15 +201,19 @@ order: 0;
   margin-bottom: 15px;
 }
 
-.create-project-modal-container {
-  position: absolute;
- 
-  top: 100px;
-  z-index: 10;
-  width: 500px;
-  height: 500px;
-  background-color: pink;
+.overlay{
+ position: fixed; /* Sit on top of the page content */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
 }
+
+
+
 
 
 </style>

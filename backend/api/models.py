@@ -7,6 +7,8 @@ from django.db import models
 class Project(models.Model):
     title = models.CharField(max_length=100)
     createdBy = models.CharField(max_length=100)
+    content = models.TextField(max_length=1000, default='None')
+    timestamp = models.CharField(max_length=100, default="None")
     # Project Stats can be entered later
     def __str__(self):
         return self.title

@@ -79,7 +79,6 @@ export default {
 
         CreateTask: function(){
             var data = {
-                "id": "1", 
                 "title": this.formatInput(this.title), 
                 "content": this.formatInput(this.content), 
                 "completed": "False", 
@@ -89,7 +88,7 @@ export default {
                 "dateToComplete": this.getDateToComplet(),
                 "createdBy": this.$store.state.username,
                 // Hard coded for now while building
-                "projectID": "1"
+                "projectID": this.$store.state.selectedProjectID
             };
             console.log(data)
             

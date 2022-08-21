@@ -59,7 +59,8 @@ data() {
 },  
 methods: {
            fetchData: async function(){
-            const url = "http://127.0.0.1:8000/api/ticket-list/";
+            // Get the Project id selected from the stoe state and append to the url
+            const url = "http://127.0.0.1:8000/api/ticket-list-by-project-id/" + this.$store.state.selectedProjectID;
             const options =  {
             method: 'GET',
             credentials: 'same-origin',
@@ -93,6 +94,7 @@ beforeMount() {
 created(){
   // Work around to have a persistent data and to not loose the username when refreshing the page 
   this.$store.state.username = localStorage.getItem('username')
+  this.$store.state.selectedProjectID = localStorage.getItem('projectID')
 },
 }
 </script>

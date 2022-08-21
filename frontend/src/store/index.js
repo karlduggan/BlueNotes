@@ -13,6 +13,8 @@ export default createStore({
         // Store the username
         username: "",
         showComments: false,
+        // Tracking the selected project
+        selectedProjectID: null,
         // Tracking current ticket selected 
         selectedTicketID: null,
         // Show Add Ticket Modal

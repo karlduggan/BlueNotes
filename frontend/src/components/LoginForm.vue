@@ -50,8 +50,8 @@ export default {
                 axios.defaults.headers.common["Authorization"] = "Token " + token;
                 // store token to the locaStorage
                 localStorage.setItem("token", token);
-                // Push to App
-                this.$router.push("/todo-list");
+                // Push to App dashboard
+                this.$router.push("/dashboard");
                 
                 // Set the username for welcome feature
                 this.$store.state.username = this.username
