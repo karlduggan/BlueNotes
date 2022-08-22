@@ -97,6 +97,7 @@ align-self: auto;
 order: 0;
 max-width: 12em;
 min-width: 12em;
+background-color: $background-color-3;
 
 }
 .inner-right-container{
