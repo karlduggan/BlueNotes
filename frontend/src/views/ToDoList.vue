@@ -110,7 +110,7 @@ h3 {
 }
 .app-container {
    display: flex;
-   justify-content: center;
+
    background-color: $background-color-3;
    // Off set the header with calc 
    min-height: calc(100vh - 68px);
@@ -118,16 +118,24 @@ h3 {
 }
 .wrapper {
     display: flex;
+    flex-direction: row;
+    width: 100%;
+
 }
 .left {
   padding: 15px;
   background-color: $background-color-3;
-  min-width: 300px;
+  flex-grow: 1;
+  max-width: 300px;
+
 }
 .middle {
 position: relative;
 border-left: solid 1px $border-color-1;
 background-color: $background-color;
+flex-grow: 2;
+flex-basis: auto;
+align-self: auto;
 }
 .right {
 position: relative;
@@ -135,6 +143,9 @@ min-width: 300px;
 border-left: solid 1px $border-color-1;
 background-color: $background-color-3;
 padding: 15px;
+flex-grow: 1;
+flex-basis: auto;
+align-self: auto;
 }
 .right-wrapper{
     padding: 10px;

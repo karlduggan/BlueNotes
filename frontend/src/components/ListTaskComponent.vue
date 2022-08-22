@@ -42,7 +42,8 @@ export default {
 <style lang="scss" scoped > 
 .list-wrapper {
     height: 100%;
-    min-width: 900px;
+ 
+   
     overflow-y: hidden;
     /*background-color: $background-color;*/
 
