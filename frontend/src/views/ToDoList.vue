@@ -2,6 +2,10 @@
   <div class="app-container" v-if="this.$store.state.isAuthenticated">
     <div class="wrapper">
         <div class="left">
+          <div class="back-btn" @click="$router.push('/dashboard')">
+            <p>Back</p>
+          </div>
+       
         <CreateTaskComponent/>
         </div>
         <div class="middle">
@@ -135,5 +139,19 @@ padding: 15px;
 .right-wrapper{
     padding: 10px;
 }
-
+.back-btn {
+  color: $border-color-2;
+  margin-left: 10px;
+  cursor: pointer;
+  width: fit-content; 
+}
+.back-btn p {
+  border-bottom: solid 1px $border-color-2;
+  transition: all 200ms ease-in-out;
+  font-weight: 500;
+}
+.back-btn p:hover {
+  color: $white;
+  border-bottom: 1px solid $white;
+}
 </style>

@@ -39,6 +39,7 @@ export default {
                 username: this.username,
                 password: this.password
             };
+            
             axios
                 .post("/api/v1/token/login", formData)
                 .then(response => {

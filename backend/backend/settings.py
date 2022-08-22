@@ -67,7 +67,8 @@ CORS_ORIGIN_WHITELIST = (
 'http://127.0.0.1:8000',
 'http://localhost:8000',
 'http://127.0.0.1:8080',
-'http://localhost:8080'
+'http://localhost:8080',
+'http://192.168.1.2:8080'
 
 # Here we need to pay attention to ： 1. You must add http:// Otherwise, the report will be wrong （https Not tested ） 2. This address is the address that allows cross domain , Front end address 
 
