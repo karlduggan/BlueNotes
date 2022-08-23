@@ -154,8 +154,6 @@ order: 0;
 }
 .inner-right-bottom-container{
   justify-content: center;
-  border: 1px solid $border-color-2;
-  margin: 5px;
   display: flex;
   flex-grow: 1;
   flex-shrink: 0;
