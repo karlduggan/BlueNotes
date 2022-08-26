@@ -42,10 +42,7 @@
                             <p>{{content}}</p>
                             <!--Testing Comment Button-->
 
-                            
-                           
-                            
-                            
+         
                         </div>
                     </div>
                 </transition>
@@ -78,7 +75,7 @@ export default {
             dropdownText: "View Details"
         }
     },
-    name: "EntryComponent",
+    name: "TicketComponent",
     props: [
         'id',
         'title',
@@ -103,7 +100,7 @@ export default {
             }
         },
         deleteEntry: function(){
-            const url = "http://127.0.0.1:8000/api/task-delete/" + this.id;
+            const url = "http://127.0.0.1:8000/api/ticket-delete/" + this.id;
             const options =  {
             method: 'DELETE',
             credentials: 'same-origin',

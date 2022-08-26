@@ -2,7 +2,7 @@
         <div class="list-wrapper">
             <div>
             <div class="table-row" v-for="(task, index) in taskListData" :key="index.id">
-                 <EntryComponent 
+                 <TicketComponent 
                  :title="taskListData[index].title"
                  :content="taskListData[index].content"
                  :timestamp="taskListData[index].timestamp"
@@ -18,11 +18,11 @@
 </template>
 
 <script>
-import EntryComponent from './EntryComponent.vue';
+import TicketComponent from './TicketComponent.vue';
 export default {
     name: "ListTaskComponent",
     components: {
-    EntryComponent
+    TicketComponent
     },
     data(){
         return {

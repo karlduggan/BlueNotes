@@ -29,19 +29,26 @@
 
 import axios from 'axios'
 export default{
-    props: ['commentText','commentBy', 'commentDate', 'id'],
+    props: ['commentText','commentBy', 'commentDate', 'id', 'index'],
     methods: {
         'deleteComment': function(){
+            // Get confirmation before deleting
             console.log(this.id )
+           
+            console.log(this.$store.state.commentList[this.index])
             let confirmation = confirm("Are you sure you want to delete comment?")
             if(confirmation == true){
                 const url_delete = "http://127.0.0.1:8000/api/comment-delete/" + this.id;
                 axios.delete(url_delete)
                 .then(console.log('Delete Successful')).catch(error => (console.error("Error occured with when trying to delete a comment: ", error)))
-                this.$store.state.commentList.pop(this.id)
+               
+               // Splice used to delete a specific item by index 
+                this.$store.state.commentList.splice(this.index, 1)
+                
                 // Get and refresh ticket list
                 //const url_get = "http://127.0.0.1:8000/api/comment-list/" + this.$store.state.selectedTicketID;
                 //axios(url_get).then(data => (this.$store.state.commentList = data))
+
             }
         
             }

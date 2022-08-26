@@ -5,6 +5,7 @@
                 <div class="table-row" v-for="(comment, index) in commentListData" :key="index.id">
                     <!---Put data format here for comment-->
                     <CommentComponent
+                    :index="index"
                     :id="commentListData[index].id"
                     :commentText="commentListData[index].comment"
                     :commentBy="commentListData[index].createdBy" 
@@ -21,7 +22,7 @@ export default {
     computed: {
         commentListData() {
             // Reverse the list so that newest comment is displayed
-            return this.$store.state.commentList.slice().reverse();
+            return this.$store.state.commentList
         }
     },
     methods: {
