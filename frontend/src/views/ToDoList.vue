@@ -6,7 +6,7 @@
             <p>Back</p>
           </div>
        
-        <CreateTaskComponent/>
+        <CreateTicketComponent/>
         </div>
         <div class="middle">
         <ListTaskComponent/>
@@ -34,7 +34,7 @@
 <script>
 import { ref } from 'vue';
 import axios from 'axios';
-import CreateTaskComponent from '@/components/CreateTaskComponent.vue';
+import CreateTicketComponent from '@/components/CreateTicketComponent.vue';
 import ListTaskComponent from '@/components/ListTaskComponent.vue';
 import CommentListComponent from '@/components/CommentListComponent.vue';
 import CreateCommentComponent from '@/components/CreateCommentComponent.vue';
@@ -43,7 +43,7 @@ import CreateCommentComponent from '@/components/CreateCommentComponent.vue';
 export default {
   name: 'ToDoList',
   components: {
-    CreateTaskComponent,
+    CreateTicketComponent,
     ListTaskComponent,
     CommentListComponent,
     CreateCommentComponent,
@@ -74,7 +74,7 @@ methods: {
             }}
             let response = await fetch(url, options);
             let data = await response.json()
-            this.$store.state.taskList = data;
+            this.$store.state.ticketList = data;
           
         },
         hideComments: function(){

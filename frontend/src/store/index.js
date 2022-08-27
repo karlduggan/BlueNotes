@@ -8,7 +8,7 @@ export default createStore({
         // Store api request results in the task list
         name: "Testing Vue State Management in store/index.js",
         projectList: [],
-        taskList: [],
+        ticketList: [],
         commentList:[],
         // Store the username
         username: "",
@@ -44,17 +44,17 @@ export default createStore({
             state.isAuthenticated = false
         },
         // Authentication END 
-        addTask(state,payload){
-            state.taskList.push(payload);
+        addTicket(state,payload){
+            state.ticketList.push(payload);
         },
         addData(state, payload){
-            state.taskList = payload;
+            state.ticketList = payload;
         }
     },
     actions: { // Asynchronous
-        addTask(state, payload){
+        addTicket(state, payload){
             // To invoke the action, call on the store.dispatch() function:
-            state.commit('addTask', payload)
+            state.commit('addTicket', payload)
         },
         addData(state, payload){
             state.commit('addData', payload)
@@ -69,8 +69,8 @@ export default createStore({
 
     },
     getters: {
-        getTaskList(state){
-            return state.taskList;
+        getTicketList(state){
+            return state.ticketList;
         }
     },
     modules: {

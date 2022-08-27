@@ -57,7 +57,7 @@ export default {
     },
     computered: {
         taskList() {
-            return this.$store.state.taskList;
+            return this.$store.state.ticketList;
         }
     },
     methods: {
@@ -87,13 +87,12 @@ export default {
                 "priority": this.priority,
                 "dateToComplete": this.getDateToComplet(),
                 "createdBy": this.$store.state.username,
-                // Hard coded for now while building
                 "projectID": this.$store.state.selectedProjectID
             };
             console.log(data)
             
             // State management "store.index.js" send task data
-           this.$store.state.taskList.push(data);
+           this.$store.state.ticketList.push(data);
            
             // Send to django
             const url = "http://127.0.0.1:8000/api/ticket-create/"

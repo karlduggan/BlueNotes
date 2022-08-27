@@ -4,7 +4,7 @@
     <button @click="close">X</button>
     </div>
     <body>
-        <CreateTaskComponent></CreateTaskComponent>
+        <CreateTicketComponent></CreateTicketComponent>
     </body>
     <footer>
 
@@ -13,7 +13,8 @@
 </template>
 
 <script>
-import CreateTaskComponent from './CreateTaskComponent.vue'
+
+import CreateTicketComponent from './CreateTicketComponent.vue';
 export default {
     name: "CreateTicket",
     data: function () {
@@ -56,7 +57,7 @@ export default {
             document.onmousemove = null;
         }
     },
-    components: { CreateTaskComponent }
+    components: { CreateTicketComponent }
 }
 </script>
 

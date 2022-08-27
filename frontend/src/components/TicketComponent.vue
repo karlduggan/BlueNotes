@@ -77,6 +77,7 @@ export default {
     },
     name: "TicketComponent",
     props: [
+        'index', 
         'id',
         'title',
         'content',
@@ -100,18 +101,23 @@ export default {
             }
         },
         deleteEntry: function(){
-            const url = "http://127.0.0.1:8000/api/ticket-delete/" + this.id;
-            const options =  {
-            method: 'DELETE',
-            credentials: 'same-origin',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Token ' + this.$store.state.token
-            }}
-            fetch(url, options)
-            .then(response => response.json())
-            .then(data =>  console.log(data))
-            .catch( error => console.log(error.message))
+            let confirmation = confirm("Are you sure you want to delete ticket?")
+            if(confirmation == true){
+                const url = "http://127.0.0.1:8000/api/ticket-delete/" + this.id;
+                const options =  {
+                method: 'DELETE',
+                credentials: 'same-origin',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Token ' + this.$store.state.token
+                }}
+                fetch(url, options)
+                .then(response => response.json())
+                .then(data =>  console.log(data))
+                .catch( error => console.log(error.message))
+                // Splice used to delete a specific item by index 
+                this.$store.state.ticketList.splice(this.index, 1)
+            }
         },
         test:function(){
             console.log("comment test click")

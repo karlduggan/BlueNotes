@@ -1,16 +1,17 @@
 <template>
         <div class="list-wrapper">
             <div>
-            <div class="table-row" v-for="(task, index) in taskListData" :key="index.id">
+            <div class="table-row" v-for="(task, index) in ticketListData" :key="index.id">
                  <TicketComponent 
-                 :title="taskListData[index].title"
-                 :content="taskListData[index].content"
-                 :timestamp="taskListData[index].timestamp"
-                 :dateToComplete="taskListData[index].dateToComplete"
-                 :status="taskListData[index].status"
-                 :id="taskListData[index].id"
-                 :priority="taskListData[index].priority"
-                 :createdBy="taskListData[index].createdBy"
+                 :index="index"
+                 :title="ticketListData[index].title"
+                 :content="ticketListData[index].content"
+                 :timestamp="ticketListData[index].timestamp"
+                 :dateToComplete="ticketListData[index].dateToComplete"
+                 :status="ticketListData[index].status"
+                 :id="ticketListData[index].id"
+                 :priority="ticketListData[index].priority"
+                 :createdBy="ticketListData[index].createdBy"
                  />
             </div>
             </div>
@@ -26,13 +27,13 @@ export default {
     },
     data(){
         return {
-            taskList: []
+            ticketList: []
         }
     },
     computed: {
-        taskListData(){
+        ticketListData(){
             // Reverse the list so that newest ticket is displayed
-            return this.$store.state.taskList.slice().reverse();
+            return this.$store.state.ticketList.slice().reverse();
         }
     },   
 }
