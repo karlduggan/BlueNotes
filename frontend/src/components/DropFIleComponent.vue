@@ -1,10 +1,16 @@
 <template>
 
 
-    
-    <div id="image_drop_area">
-        <p>Drag and drop image file here</p>
-        
+    <div id="containerr"  @dragover.prevent @drop.prevent>
+        <div id="image_drop_area" @drop="onDrop">
+            <p>Drag and drop image file here</p>
+            <input type="file" id="fileElm" multiple @change="uploadFile">
+            <div v-if="fileUpload.length > 0" class="image-div">
+                <div v-for="file in fileUpload" :key="file.src">
+                    <img :src="file.src" class="image" />
+                </div>
+            </div>
+        </div>
     </div>
 
 </template>
@@ -13,10 +19,22 @@
 export default {
     name: "DropFileComponent",
     data(){
-
+        return {
+        fileUpload: []
+        }
     },
     methods: {
-        
+        uploadFile: function(event){
+            this.fileUpload = event.target.files;
+            console.log("File uploaded")
+           
+        },
+        onDrop: function(event){
+            this.fileUpload = event.dataTransfer.files;
+            console.log("Item dropped !")
+            console.log(event.dataTransfer.files[0])
+          
+        }
     }
 }
 </script>
@@ -39,5 +57,9 @@ export default {
    
     color: $border-color-2;
 }
+input {
+    color: $white;
+}
+
 
 </style>
