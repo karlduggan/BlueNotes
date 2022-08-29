@@ -21,6 +21,9 @@
                     </div>
                     
                 </div>
+                <div class="dropfile">
+                    <DropFileComponent></DropFileComponent>
+                </div>
                 
                 <button @click="CreateTask()">Submit</button>
         </div>
@@ -31,13 +34,16 @@
 import PrioritySelectComponent from './PrioritySelectComponent.vue';
 import Datepicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css'
+import DropFileComponent from './DropFileComponent.vue';
 import { ref } from "vue";
+
 export default {
     inheritAttrs: true,
     components : {
-        Datepicker,
-        PrioritySelectComponent,
-    },
+    Datepicker,
+    PrioritySelectComponent,
+    DropFileComponent
+},
     emits: {
         'sendData': null
         },

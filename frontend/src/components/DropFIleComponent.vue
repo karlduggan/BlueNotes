@@ -1,9 +1,12 @@
 <template>
 
-<div class="container">
-    <p>Drag and drop an image into the box</p>
-    <div id="image_drop_area"></div>
-</div>
+
+    
+    <div id="image_drop_area">
+        <p>Drag and drop image file here</p>
+        
+    </div>
+
 </template>
     
 <script>
@@ -19,13 +22,22 @@ export default {
 </script>
 
 <style lang="scss">
+
 #image_drop_area{
-   width: 400px;
-   height: 225px;
-   border: 1px solid black;
+    margin-top: 15px;
+   width: 100%;
+   height: 200px;
+   border: 1px dashed $border-color-2;
    background-position: center;
    background-size: cover;
    box-sizing: border-box;  
+   text-align: center;
+   
+   
+}
+#image_drop_area p {
+   
+    color: $border-color-2;
 }
 
 </style>
