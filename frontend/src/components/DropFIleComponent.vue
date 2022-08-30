@@ -3,8 +3,10 @@
 
     <div id="containerr"  @dragover.prevent @drop.prevent>
         <div id="image_drop_area" @drop="onDrop">
-            <p>Drag and drop image file here</p>
-            <input type="file" id="fileElm" multiple @change="uploadFile">
+
+            
+            <input type="file" id="fileElm" class="hidden" multiple @change="uploadFile">
+            <label for="file"><p>Drag and drop image file here</p></label>
             <div v-if="fileUpload.length > 0" class="image-div">
                 <div v-for="file in fileUpload" :key="file.src">
                     <img :src="file.src" class="image" />
@@ -16,6 +18,10 @@
 </template>
     
 <script>
+// Using https://www.smashingmagazine.com/2022/03/drag-drop-file-uploader-vuejs-3/
+// To learn and create drag and drop upload component
+const events = ['dragenter', 'dragleave', 'dragover', 'drop']
+
 export default {
     name: "DropFileComponent",
     data(){
@@ -30,11 +36,18 @@ export default {
            
         },
         onDrop: function(event){
-            this.fileUpload = event.dataTransfer.files;
+            
+            this.fileUpload.push(event.dataTransfer.files)
             console.log("Item dropped !")
-            console.log(event.dataTransfer.files[0])
+            console.log(this.fileUpload)
           
         }
+    },
+    onMounted(){
+        events.forEach(event => document.body.addEventListener(event, (e)=>e.preventDefault()))
+    },
+    onUnmounted(){
+        events.forEach(event => document.body.removeEventListener(event, (e)=>e.preventDefault()))
     }
 }
 </script>
@@ -57,8 +70,9 @@ export default {
    
     color: $border-color-2;
 }
-input {
+#fileElm {
     color: $white;
+    display: none;
 }
 
 
