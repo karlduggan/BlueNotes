@@ -12,9 +12,9 @@
             
             <input type="file" id="drop-file-input" class="hidden" multiple @change="uploadFile" accept="image/png, image/jpg">
             <label for="drop-file-input">Drag and drop image file here</label>
-            <span class="file-detail">File: {{dropFile.name}}</span>
+            <span class="file-detail">{{dropFile.name}}</span>
           
-            <div class="display-image"></div>
+            <div id="display-image"></div>
         </div>
     </div>
 
@@ -36,7 +36,18 @@ export default {
         }
         const onDrop = (event) => {
             dropFile.value = event.dataTransfer.files[0]
-            console.log(dropFile.value)
+            var reader = new FileReader();
+            var preview = document.getElementById("display-image")
+            reader.onload = function(readerEvent){
+                var listItem = document.createElement("li");
+                listItem.innerHTML = "<img src='" + readerEvent.target.result + "' />";
+                preview.append(listItem)
+            }
+            
+            var image = reader.readAsDataURL(dropFile.value)
+            console.log(reader.readAsDataURL(dropFile.value))
+            document.getElementById("display-image").style.backgroundImage = "url(" + image + ")";
+            
             
         }
         const toggleActive = () => {
