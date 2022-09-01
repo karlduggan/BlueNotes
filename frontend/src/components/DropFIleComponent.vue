@@ -1,54 +1,56 @@
 <template>
 
 
-    <div id="containerr"  @dragover.prevent @drop.prevent>
-        <div id="image_drop_area" @drop="onDrop">
+    <div id="containerr"  
+    @dragenter.prevent="toggleActive" 
+    @dragleave.prevent="toggleActive" 
+    @dragover.prevent 
+    @drop.prevent="toggleActive"
+    :class="{ 'active-droparea': active}">
+        <div id="image_drop_area" @drop.prevent="onDrop" @change="selectedFile">
 
             
-            <input type="file" id="fileElm" class="hidden" multiple @change="uploadFile">
-            <label for="file"><p>Drag and drop image file here</p></label>
-            <div v-if="fileUpload.length > 0" class="image-div">
-                <div v-for="file in fileUpload" :key="file.src">
-                    <img :src="file.src" class="image" />
-                </div>
-            </div>
+            <input type="file" id="drop-file-input" class="hidden" multiple @change="uploadFile" accept="image/png, image/jpg">
+            <label for="drop-file-input">Drag and drop image file here</label>
+            <span class="file-detail">File: {{dropFile.name}}</span>
+          
+            <div class="display-image"></div>
         </div>
     </div>
 
 </template>
     
 <script>
-// Using https://www.smashingmagazine.com/2022/03/drag-drop-file-uploader-vuejs-3/
-// To learn and create drag and drop upload component
-const events = ['dragenter', 'dragleave', 'dragover', 'drop']
+import { ref } from 'vue';
+
 
 export default {
     name: "DropFileComponent",
-    data(){
-        return {
-        fileUpload: []
+
+    setup(){
+        let dropFile = ref("");
+        const active = ref(false);
+
+        const selectedFile = () => {
+            dropFile.value = document.getElementById("drop-file-input").files[0]
         }
-    },
-    methods: {
-        uploadFile: function(event){
-            this.fileUpload = event.target.files;
-            console.log("File uploaded")
-           
-        },
-        onDrop: function(event){
+        const onDrop = (event) => {
+            dropFile.value = event.dataTransfer.files[0]
+            console.log(dropFile.value)
             
-            this.fileUpload.push(event.dataTransfer.files)
-            console.log("Item dropped !")
-            console.log(this.fileUpload)
-          
+        }
+        const toggleActive = () => {
+            active.value = !active.value;
+        }
+        return {
+            dropFile, active, toggleActive, onDrop, selectedFile
         }
     },
-    onMounted(){
-        events.forEach(event => document.body.addEventListener(event, (e)=>e.preventDefault()))
-    },
-    onUnmounted(){
-        events.forEach(event => document.body.removeEventListener(event, (e)=>e.preventDefault()))
+  
+    methods: {
+      
     }
+ 
 }
 </script>
 
@@ -70,10 +72,20 @@ export default {
    
     color: $border-color-2;
 }
-#fileElm {
-    color: $white;
+#drop-file-input {
+    
     display: none;
 }
+label {
+     color: $white;
+     cursor: pointer;
+}
+.active-droparea {
+    background-color: $border-color-2;
+    
+
+}
+
 
 
 </style>
