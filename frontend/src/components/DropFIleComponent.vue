@@ -17,6 +17,7 @@
             <div id="display-image"></div>
         </div>
     </div>
+    <button @click="sendTest">Test Send</button>
 
 </template>
     
@@ -26,8 +27,10 @@ import { ref } from 'vue';
 
 export default {
     name: "DropFileComponent",
+   
 
     setup(){
+        // Temp store drop file data here
         let dropFile = ref("");
         const active = ref(false);
 
@@ -36,16 +39,27 @@ export default {
         }
         const onDrop = (event) => {
             dropFile.value = event.dataTransfer.files[0]
+            
+            console.log(dropFile.value)
+
             var reader = new FileReader();
             var preview = document.getElementById("display-image")
+
             reader.onload = function(readerEvent){
+                
                 var listItem = document.createElement("li");
-                listItem.innerHTML = "<img src='" + readerEvent.target.result + "' />";
+                listItem.innerHTML = "<img src='" + readerEvent.target.result + "' width='50' />";
                 preview.append(listItem)
+
+                /*
+                const img = new Image();
+                img.src = reader.result
+                console.log(img)
+                */
             }
             
             var image = reader.readAsDataURL(dropFile.value)
-            console.log(reader.readAsDataURL(dropFile.value))
+            
             document.getElementById("display-image").style.backgroundImage = "url(" + image + ")";
             
             
@@ -56,11 +70,17 @@ export default {
         return {
             dropFile, active, toggleActive, onDrop, selectedFile
         }
+     
     },
+         methods: {
+
+            sendTest: function(){
+                console.log("Testing Send")
+                console.log(this.dropFile)
+            }
+        }
   
-    methods: {
-      
-    }
+    
  
 }
 </script>
@@ -94,6 +114,14 @@ label {
 .active-droparea {
     background-color: $border-color-2;
     
+
+}
+span {
+    color: $white;
+}
+li {
+    list-style: none;
+   
 
 }
 
