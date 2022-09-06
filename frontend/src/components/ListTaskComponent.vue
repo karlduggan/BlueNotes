@@ -1,5 +1,6 @@
 <template>
         <div class="list-wrapper">
+            <p>ListTaskComponent</p>
             <div>
             <div class="table-row" v-for="(task, index) in ticketListData" :key="index.id">
                  <TicketComponent 

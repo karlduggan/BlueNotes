@@ -12,6 +12,11 @@
                         <p>{{priority}}</p>
                     </div>
                     <!-- Priority ENDS -->
+
+                    <div class="">
+                        <!--Temp -->
+                        <CountDownComponent :complete_date="dateToComplete" />
+                    </div>
                 
                     <div class="status-container">
                         <DynamicStatusButtom :entryId="id" :status="status"/>
@@ -61,6 +66,8 @@
 <script>
 import { ref } from 'vue';
 import DynamicStatusButtom from './DynamicStatusButtom.vue'
+import CountDownComponent from './CountDownComponent.vue';
+
 
 export default {
     setup(){
@@ -88,7 +95,8 @@ export default {
         'createdBy'
     ],
     components: {
-    DynamicStatusButtom
+    DynamicStatusButtom,
+    CountDownComponent
 },
 
     methods: {
