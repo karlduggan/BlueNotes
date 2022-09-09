@@ -13,11 +13,16 @@
                     </div>
                     <!-- Priority ENDS -->
 
-                    <div class="">
+                    <div class="countdown-container">
                         <!--Temp -->
                         <CountDownComponent :complete_date="dateToComplete" />
                     </div>
                 
+
+                    <div class="space">
+
+                    </div>
+
                     <div class="status-container">
                         <DynamicStatusButtom :entryId="id" :status="status"/>
                     </div>
@@ -190,12 +195,15 @@ export default {
 
 .header-row {
 position: relative;
+display: flex;
+justify-content: space-between;
 }
 #title {
     font-size: 16px;
     font-weight: 800;
     color: #fff;
     display:inline-block;
+    width: 50%;
 }
 .view-details {
     display: inline-block;
@@ -217,16 +225,13 @@ position: relative;
 
 .priority {
     display:inline-block;
-    font-size: 11px;
+    font-size: 15px;
     color: $dark-grey;
-    position:absolute;
-    left: 67%;
-    margin: 10px;
+    width: 100px;
 }
 .status-container {
     margin: 13px;
-    position: relative;
-    float: right;
+    
   
     
 }
@@ -287,6 +292,11 @@ position: relative;
     margin-bottom: 15px;
     
 }
-
+.countdown-container {
+    width: 100px;
+}
+.space {
+    
+}
 
 </style>
